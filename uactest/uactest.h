@@ -28,6 +28,7 @@ private slots:
 	void onCalcButtonClicked();
 	void checkModuleValid(int index);
 	void checkCalcReady();
+	void calcComplete();
 };
 
 #endif // UACTEST_H

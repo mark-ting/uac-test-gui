@@ -1,12 +1,16 @@
 #include "uactest.h"
 #include "simulation.h"
 #include "uac.h"
+#include <QtConcurrent/QtConcurrentRun>
 
 uactest::uactest(QWidget *parent)
 	: QMainWindow(parent)
 {
 	loadUacs();
 	ui.setupUi(this);
+
+	ui.progressBar->setMinimum(0);
+	ui.progressBar->setMaximum(1);
 }
 
 uactest::~uactest()
@@ -14,6 +18,9 @@ uactest::~uactest()
 }
 
 void uactest::onCalcButtonClicked() {
+	ui.calcButton->setEnabled(false);
+	ui.progressBar->setMaximum(0);
+
 	std::shared_ptr<Uac> uac = selectUac(ui.uacSelect->currentIndex());
 	bool module = ui.moduleCheck->checkState();
 	bool fastfire = ui.fastfireCheck->checkState();
@@ -22,11 +29,9 @@ void uactest::onCalcButtonClicked() {
 	s.setModule(module);
 	s.setFastFire(fastfire);
 
-	s.run(ui.cycleCount->value());
-
-	ui.damageDisplay->setText(QString::number(s.getDamage()));
-	ui.timeDisplay->setText(QString::number(s.getTime()));
-	ui.dpsDisplay->setText(QString::number(s.getDps()));
+	QFuture<void> future = QtConcurrent::run(&this->s, &Simulation::run, ui.cycleCount->value());
+	FutureWatcher.setFuture(future);
+	connect(&FutureWatcher, SIGNAL(finished()), this, SLOT(calcComplete()));
 }
 
 void uactest::checkModuleValid(int index) {
@@ -47,4 +52,13 @@ void uactest::checkCalcReady()
 	else {
 		ui.calcButton->setEnabled(false);
 	}
+}
+
+void uactest::calcComplete()
+{
+	ui.progressBar->setMaximum(1);
+	ui.damageDisplay->setText(QString::number(s.getDamage()));
+	ui.timeDisplay->setText(QString::number(s.getTime()));
+	ui.dpsDisplay->setText(QString::number(s.getDps()));
+	ui.calcButton->setEnabled(true);
 }

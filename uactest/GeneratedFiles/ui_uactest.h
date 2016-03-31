@@ -22,6 +22,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
@@ -38,7 +39,7 @@ public:
     QPushButton *calcButton;
     QGroupBox *cooldownBox;
     QHBoxLayout *horizontalLayout;
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *cooldownLayout;
     QCheckBox *fastfireCheck;
     QCheckBox *moduleCheck;
     QGroupBox *loadoutBox;
@@ -50,17 +51,19 @@ public:
     QVBoxLayout *cycleCountLayout;
     QLabel *cycleCountLabel;
     QSpinBox *cycleCount;
-    QWidget *layoutWidget;
-    QFormLayout *formLayout;
+    QProgressBar *progressBar;
+    QGroupBox *resultBox;
+    QHBoxLayout *horizontalLayout_2;
+    QFormLayout *resultLayout;
     QLabel *timeDisplayLabel;
     QLabel *timeDisplay;
     QLabel *damageDisplayLabel;
     QLabel *damageDisplay;
     QLabel *dpsDisplayLabel;
     QLabel *dpsDisplay;
+    QStatusBar *statusBar;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *uactestClass)
     {
@@ -72,7 +75,7 @@ public:
         calcButton = new QPushButton(centralWidget);
         calcButton->setObjectName(QStringLiteral("calcButton"));
         calcButton->setEnabled(false);
-        calcButton->setGeometry(QRect(20, 180, 221, 131));
+        calcButton->setGeometry(QRect(20, 180, 221, 181));
         cooldownBox = new QGroupBox(centralWidget);
         cooldownBox->setObjectName(QStringLiteral("cooldownBox"));
         cooldownBox->setGeometry(QRect(350, 20, 271, 141));
@@ -81,21 +84,21 @@ public:
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        cooldownLayout = new QVBoxLayout();
+        cooldownLayout->setSpacing(6);
+        cooldownLayout->setObjectName(QStringLiteral("cooldownLayout"));
         fastfireCheck = new QCheckBox(cooldownBox);
         fastfireCheck->setObjectName(QStringLiteral("fastfireCheck"));
 
-        verticalLayout->addWidget(fastfireCheck);
+        cooldownLayout->addWidget(fastfireCheck);
 
         moduleCheck = new QCheckBox(cooldownBox);
         moduleCheck->setObjectName(QStringLiteral("moduleCheck"));
 
-        verticalLayout->addWidget(moduleCheck);
+        cooldownLayout->addWidget(moduleCheck);
 
 
-        horizontalLayout->addLayout(verticalLayout);
+        horizontalLayout->addLayout(cooldownLayout);
 
         loadoutBox = new QGroupBox(centralWidget);
         loadoutBox->setObjectName(QStringLiteral("loadoutBox"));
@@ -146,57 +149,72 @@ public:
 
         verticalLayout_2->addLayout(loadoutLayout);
 
-        layoutWidget = new QWidget(centralWidget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(260, 180, 361, 131));
-        formLayout = new QFormLayout(layoutWidget);
-        formLayout->setSpacing(6);
-        formLayout->setContentsMargins(11, 11, 11, 11);
-        formLayout->setObjectName(QStringLiteral("formLayout"));
-        formLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        formLayout->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        formLayout->setContentsMargins(0, 0, 0, 0);
-        timeDisplayLabel = new QLabel(layoutWidget);
+        progressBar = new QProgressBar(centralWidget);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setGeometry(QRect(20, 380, 601, 27));
+        progressBar->setMaximum(1);
+        progressBar->setValue(0);
+        progressBar->setTextVisible(false);
+        progressBar->setInvertedAppearance(false);
+        resultBox = new QGroupBox(centralWidget);
+        resultBox->setObjectName(QStringLiteral("resultBox"));
+        resultBox->setGeometry(QRect(260, 180, 361, 181));
+        horizontalLayout_2 = new QHBoxLayout(resultBox);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        resultLayout = new QFormLayout();
+        resultLayout->setSpacing(6);
+        resultLayout->setObjectName(QStringLiteral("resultLayout"));
+        resultLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        resultLayout->setLabelAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        resultLayout->setFormAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        resultLayout->setHorizontalSpacing(12);
+        resultLayout->setVerticalSpacing(12);
+        resultLayout->setContentsMargins(-1, -1, 0, -1);
+        timeDisplayLabel = new QLabel(resultBox);
         timeDisplayLabel->setObjectName(QStringLiteral("timeDisplayLabel"));
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, timeDisplayLabel);
+        resultLayout->setWidget(0, QFormLayout::LabelRole, timeDisplayLabel);
 
-        timeDisplay = new QLabel(layoutWidget);
+        timeDisplay = new QLabel(resultBox);
         timeDisplay->setObjectName(QStringLiteral("timeDisplay"));
         timeDisplay->setFrameShape(QFrame::Box);
         timeDisplay->setFrameShadow(QFrame::Sunken);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, timeDisplay);
+        resultLayout->setWidget(0, QFormLayout::FieldRole, timeDisplay);
 
-        damageDisplayLabel = new QLabel(layoutWidget);
+        damageDisplayLabel = new QLabel(resultBox);
         damageDisplayLabel->setObjectName(QStringLiteral("damageDisplayLabel"));
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, damageDisplayLabel);
+        resultLayout->setWidget(1, QFormLayout::LabelRole, damageDisplayLabel);
 
-        damageDisplay = new QLabel(layoutWidget);
+        damageDisplay = new QLabel(resultBox);
         damageDisplay->setObjectName(QStringLiteral("damageDisplay"));
         damageDisplay->setFrameShape(QFrame::Box);
         damageDisplay->setFrameShadow(QFrame::Sunken);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, damageDisplay);
+        resultLayout->setWidget(1, QFormLayout::FieldRole, damageDisplay);
 
-        dpsDisplayLabel = new QLabel(layoutWidget);
+        dpsDisplayLabel = new QLabel(resultBox);
         dpsDisplayLabel->setObjectName(QStringLiteral("dpsDisplayLabel"));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, dpsDisplayLabel);
+        resultLayout->setWidget(2, QFormLayout::LabelRole, dpsDisplayLabel);
 
-        dpsDisplay = new QLabel(layoutWidget);
+        dpsDisplay = new QLabel(resultBox);
         dpsDisplay->setObjectName(QStringLiteral("dpsDisplay"));
         dpsDisplay->setFrameShape(QFrame::Box);
         dpsDisplay->setFrameShadow(QFrame::Sunken);
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, dpsDisplay);
+        resultLayout->setWidget(2, QFormLayout::FieldRole, dpsDisplay);
+
+
+        horizontalLayout_2->addLayout(resultLayout);
 
         uactestClass->setCentralWidget(centralWidget);
-        calcButton->raise();
-        cooldownBox->raise();
-        layoutWidget->raise();
-        loadoutBox->raise();
+        statusBar = new QStatusBar(uactestClass);
+        statusBar->setObjectName(QStringLiteral("statusBar"));
+        uactestClass->setStatusBar(statusBar);
         menuBar = new QMenuBar(uactestClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 935, 38));
@@ -204,9 +222,6 @@ public:
         mainToolBar = new QToolBar(uactestClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         uactestClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(uactestClass);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        uactestClass->setStatusBar(statusBar);
 #ifndef QT_NO_SHORTCUT
         uacSelectLabel->setBuddy(uacSelect);
         cycleCountLabel->setBuddy(cycleCount);
@@ -227,7 +242,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         calcButton->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>FOR SCIENCE!</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        calcButton->setText(QApplication::translate("uactestClass", "Calculate!", 0));
+        calcButton->setText(QApplication::translate("uactestClass", "For Science!", 0));
         cooldownBox->setTitle(QApplication::translate("uactestClass", "Cooldown Modifiers", 0));
 #ifndef QT_NO_TOOLTIP
         fastfireCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Enables Fast Fire.</p><p>This results in 5% CDR.</p></body></html>", 0));
@@ -254,6 +269,8 @@ public:
 #ifndef QT_NO_TOOLTIP
         cycleCount->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Number of double-tap cycles to be tested over.</p><p>Min: 10000 (ensures accuracy)</p><p>Max: 100000000 (10<span style=\" vertical-align:super;\">8</span>; you may not want to go over 10<span style=\" vertical-align:super;\">7</span> anyways)</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
+        progressBar->setFormat(QApplication::translate("uactestClass", "%p%", 0));
+        resultBox->setTitle(QApplication::translate("uactestClass", "Results", 0));
         timeDisplayLabel->setText(QApplication::translate("uactestClass", "Total Time:", 0));
 #ifndef QT_NO_TOOLTIP
         timeDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).</p><p><br/>Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10<span style=\" vertical-align:super;\">4</span>+ cycles).</p></body></html>", 0));
