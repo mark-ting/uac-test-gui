@@ -20,24 +20,20 @@ Simulation::~Simulation()
 
 void Simulation::reset()
 {
-	total_damage_ = 0;
-	time_ = 0;
+	// Reset experimental vals
+	total_damage_ = 0.0;
+	time_ = 0.0;
+
+	// Reset theoretical vals
+	theory_damage_ = 0.0;
+	theory_time_ = 0.0;
 }
 
 void Simulation::run(int num_cycles)
 {
 	reset();
 
-	double modifier = 0.0;
-
-	// TODO: have variable levels of modules set
-	if (module_) {
-		modifier += 0.12;
-	}
-
-	if (fastfire_) {
-		modifier += 0.05;
-	}
+	double modifier = calcModifier();
 
 	double real_cooldown = uac_->cooldown_ * (1 - modifier);
 	double jam_test;
@@ -69,6 +65,16 @@ void Simulation::setUac(std::shared_ptr<Uac> uac)
 	uac_ = uac;
 }
 
+void Simulation::overrideCdr(bool over)
+{
+	override_cdr_ = over;
+}
+
+void Simulation::setCdrValue(double cooldown)
+{
+	custom_cdr_ = cooldown;
+}
+
 void Simulation::setFastFire(bool fastfire)
 {
 	fastfire_ = fastfire;
@@ -77,4 +83,33 @@ void Simulation::setFastFire(bool fastfire)
 void Simulation::setModule(bool module)
 {
 	module_ = module;
+}
+
+void Simulation::setModuleRank(int rank)
+{
+	module_rank_ = rank;
+}
+
+double Simulation::calcModifier()
+{
+	if (override_cdr_) {
+		return custom_cdr_;
+	}
+	else {
+		double modifier = 0.0;
+
+		if (module_) {
+			modifier += (0.024 * module_rank_);
+		}
+
+		if (fastfire_) {
+			modifier += 0.05;
+		}
+
+		return modifier;
+	}
+}
+
+void Simulation::calcTheoretical()
+{
 }

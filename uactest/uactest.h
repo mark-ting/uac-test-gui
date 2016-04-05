@@ -24,9 +24,12 @@ private:
 	QFutureWatcher<void> FutureWatcher;
 	Simulation s;
 
-private slots:
+	private slots:
+	void checkModuleEnabled(int index);
+
+	void onToggleCdrOverride(bool checked);
+
 	void onCalcButtonClicked();
-	void checkModuleValid(int index);
 	void checkCalcReady();
 	void calcComplete();
 };
