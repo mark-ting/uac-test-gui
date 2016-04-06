@@ -118,6 +118,8 @@ void uactest::checkCalcReady()
 
 void uactest::calcComplete()
 {
+	QApplication::beep();
+	QApplication::alert(this, 0);
 	ui.progressBar->setMaximum(1);
 	ui.damageDisplay->setText(QString::number(s.getDamage()));
 	ui.timeDisplay->setText(QString::number(s.getTime()));
