@@ -6,7 +6,6 @@ std::uniform_real_distribution<double> dist(0.0, 1.0);
 
 Simulation::Simulation()
 {
-	uac_ = NULL;
 	fastfire_ = false;
 	module_ = false;
 
@@ -35,19 +34,19 @@ void Simulation::run(std::shared_ptr<Uac> uac, int num_cycles)
 
 	double modifier = calcModifier();
 
-	double real_cooldown = uac_->cooldown_ * (1 - modifier);
+	double real_cooldown = uac->cooldown_ * (1 - modifier);
 	double jam_test;
 
 	for (int cycle = 0; cycle < num_cycles; cycle++) {
 		// First Shot
-		total_damage_ += uac_->damage_;
+		total_damage_ += uac->damage_;
 
 		// Second Shot
 		jam_test = dist(rng);
 
-		if (jam_test > uac_->jam_chance_) {
+		if (jam_test > uac->jam_chance_) {
 			// Double Tap
-			total_damage_ += uac_->damage_;
+			total_damage_ += uac->damage_;
 		}
 		else
 		{
@@ -58,11 +57,6 @@ void Simulation::run(std::shared_ptr<Uac> uac, int num_cycles)
 		// Cycle Weapon
 		time_ += real_cooldown;
 	}
-}
-
-void Simulation::setUac(std::shared_ptr<Uac> uac)
-{
-	uac_ = uac;
 }
 
 void Simulation::overrideCdr(bool over)
