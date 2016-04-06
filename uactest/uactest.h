@@ -17,6 +17,7 @@ public:
 
 private:
 	Ui::uactestClass ui;
+	bool module_locked;
 
 	std::default_random_engine rng;
 	std::uniform_real_distribution<float> dist{ 0.0, 1.0 };
@@ -24,9 +25,13 @@ private:
 	QFutureWatcher<void> FutureWatcher;
 	Simulation s;
 
-private slots:
+	private slots:
+	void checkModuleEnabled(int index);
+
+	void updateModifierUiState();
+	void onToggleCdrOverride(bool checked);
+
 	void onCalcButtonClicked();
-	void checkModuleValid(int index);
 	void checkCalcReady();
 	void calcComplete();
 };
