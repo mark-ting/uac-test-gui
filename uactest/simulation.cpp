@@ -29,7 +29,7 @@ void Simulation::reset()
 	theory_time_ = 0.0;
 }
 
-void Simulation::run(int num_cycles)
+void Simulation::run(std::shared_ptr<Uac> uac, int num_cycles)
 {
 	reset();
 

@@ -10,6 +10,8 @@ uactest::uactest(QWidget *parent)
 	ui.setupUi(this);
 	module_locked = false;
 
+	connect(&FutureWatcher, SIGNAL(finished()), this, SLOT(calcComplete()));
+
 	ui.progressBar->setMinimum(0);
 	ui.progressBar->setMaximum(1);
 }
@@ -89,7 +91,6 @@ void uactest::onCalcButtonClicked() {
 	bool fastfire = ui.fastfireCheck->isChecked();
 
 	// Apply to simulation
-	s.setUac(uac);
 	s.overrideCdr(override_cdr);
 
 	if (override_cdr) {
@@ -101,9 +102,9 @@ void uactest::onCalcButtonClicked() {
 		s.setFastFire(fastfire);
 	}
 
-	QFuture<void> future = QtConcurrent::run(&this->s, &Simulation::run, ui.cycleCount->value());
+	// Run simulation with UAC and cycle count
+	QFuture<void> future = QtConcurrent::run(&this->s, &Simulation::run, uac, ui.cycleCount->value());
 	FutureWatcher.setFuture(future);
-	connect(&FutureWatcher, SIGNAL(finished()), this, SLOT(calcComplete()));
 }
 
 void uactest::checkCalcReady()
