@@ -89,7 +89,7 @@ public:
     {
         if (uactestClass->objectName().isEmpty())
             uactestClass->setObjectName(QStringLiteral("uactestClass"));
-        uactestClass->resize(1023, 540);
+        uactestClass->resize(1020, 540);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -100,10 +100,10 @@ public:
         calcButton = new QPushButton(centralWidget);
         calcButton->setObjectName(QStringLiteral("calcButton"));
         calcButton->setEnabled(false);
-        calcButton->setGeometry(QRect(20, 220, 221, 181));
+        calcButton->setGeometry(QRect(20, 220, 231, 171));
         cooldownBox = new QGroupBox(centralWidget);
         cooldownBox->setObjectName(QStringLiteral("cooldownBox"));
-        cooldownBox->setGeometry(QRect(340, 20, 270, 180));
+        cooldownBox->setGeometry(QRect(340, 20, 351, 180));
         cooldownBox->setFlat(false);
         verticalLayout_3 = new QVBoxLayout(cooldownBox);
         verticalLayout_3->setSpacing(6);
@@ -131,7 +131,7 @@ public:
         moduleRankLabel = new QLabel(cooldownBox);
         moduleRankLabel->setObjectName(QStringLiteral("moduleRankLabel"));
 
-        moduleLayout->addWidget(moduleRankLabel);
+        moduleLayout->addWidget(moduleRankLabel, 0, Qt::AlignHCenter);
 
         moduleRank = new QSpinBox(cooldownBox);
         moduleRank->setObjectName(QStringLiteral("moduleRank"));
@@ -161,7 +161,7 @@ public:
         uacSelectLabel = new QLabel(loadoutBox);
         uacSelectLabel->setObjectName(QStringLiteral("uacSelectLabel"));
 
-        uacSelectLayout->addWidget(uacSelectLabel);
+        uacSelectLayout->addWidget(uacSelectLabel, 0, Qt::AlignBottom);
 
         uacSelect = new QComboBox(loadoutBox);
         uacSelect->setObjectName(QStringLiteral("uacSelect"));
@@ -177,7 +177,7 @@ public:
         cycleCountLabel = new QLabel(loadoutBox);
         cycleCountLabel->setObjectName(QStringLiteral("cycleCountLabel"));
 
-        cycleCountLayout->addWidget(cycleCountLabel);
+        cycleCountLayout->addWidget(cycleCountLabel, 0, Qt::AlignBottom);
 
         cycleCount = new QSpinBox(loadoutBox);
         cycleCount->setObjectName(QStringLiteral("cycleCount"));
@@ -196,14 +196,14 @@ public:
 
         progressBar = new QProgressBar(centralWidget);
         progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setGeometry(QRect(20, 410, 981, 27));
+        progressBar->setGeometry(QRect(20, 400, 981, 27));
         progressBar->setMaximum(1);
         progressBar->setValue(0);
         progressBar->setTextVisible(false);
         progressBar->setInvertedAppearance(false);
         resultBox = new QGroupBox(centralWidget);
         resultBox->setObjectName(QStringLiteral("resultBox"));
-        resultBox->setGeometry(QRect(260, 220, 361, 181));
+        resultBox->setGeometry(QRect(260, 210, 361, 181));
         horizontalLayout_2 = new QHBoxLayout(resultBox);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -258,7 +258,7 @@ public:
 
         theoryBox = new QGroupBox(centralWidget);
         theoryBox->setObjectName(QStringLiteral("theoryBox"));
-        theoryBox->setGeometry(QRect(640, 220, 360, 181));
+        theoryBox->setGeometry(QRect(640, 210, 360, 181));
         horizontalLayout_3 = new QHBoxLayout(theoryBox);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -313,7 +313,7 @@ public:
 
         overrideCdrBox = new QGroupBox(centralWidget);
         overrideCdrBox->setObjectName(QStringLiteral("overrideCdrBox"));
-        overrideCdrBox->setGeometry(QRect(620, 20, 219, 171));
+        overrideCdrBox->setGeometry(QRect(700, 20, 301, 181));
         verticalLayout = new QVBoxLayout(overrideCdrBox);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -332,7 +332,7 @@ public:
         overrideCdrValueLabel = new QLabel(overrideCdrBox);
         overrideCdrValueLabel->setObjectName(QStringLiteral("overrideCdrValueLabel"));
 
-        overrideCdrValueLayout->addWidget(overrideCdrValueLabel);
+        overrideCdrValueLayout->addWidget(overrideCdrValueLabel, 0, Qt::AlignBottom);
 
         overrideCdrValue = new QDoubleSpinBox(overrideCdrBox);
         overrideCdrValue->setObjectName(QStringLiteral("overrideCdrValue"));
@@ -362,7 +362,7 @@ public:
         uactestClass->setStatusBar(statusBar);
         menuBar = new QMenuBar(uactestClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1023, 38));
+        menuBar->setGeometry(QRect(0, 0, 1020, 38));
         uactestClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(uactestClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -385,8 +385,8 @@ public:
         QObject::connect(uacSelect, SIGNAL(currentIndexChanged(int)), uactestClass, SLOT(checkCalcReady()));
         QObject::connect(cycleCount, SIGNAL(valueChanged(int)), uactestClass, SLOT(checkCalcReady()));
         QObject::connect(calcButton, SIGNAL(clicked()), uactestClass, SLOT(onCalcButtonClicked()));
-        QObject::connect(uacSelect, SIGNAL(currentIndexChanged(int)), uactestClass, SLOT(checkModuleEnabled(int)));
-        QObject::connect(overrideConfirm, SIGNAL(toggled(bool)), uactestClass, SLOT(onToggleCdrOverride(bool)));
+        QObject::connect(uacSelect, SIGNAL(currentIndexChanged(int)), uactestClass, SLOT(updateModifierUiState()));
+        QObject::connect(overrideConfirm, SIGNAL(toggled(bool)), uactestClass, SLOT(updateModifierUiState()));
 
         QMetaObject::connectSlotsByName(uactestClass);
     } // setupUi
@@ -402,12 +402,16 @@ public:
 #ifndef QT_NO_TOOLTIP
         fastfireCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Enables Fast Fire.</p><p>This results in 5% CDR.</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        fastfireCheck->setText(QApplication::translate("uactestClass", "Fast Fire (+5%)", 0));
+        fastfireCheck->setText(QApplication::translate("uactestClass", "Fast Fire (+5%):", 0));
 #ifndef QT_NO_TOOLTIP
-        moduleCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Enables UAC Cooldown Module.</p><p>This assumes a Rank 5 module, which results in 12% CDR.</p><p>(Note: disabled for UAC2)</p></body></html>", 0));
+        moduleCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Enables UAC Cooldown Module.</p><p>Set Module Rank below.</p><p>(Note: disabled for UAC2)</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        moduleCheck->setText(QApplication::translate("uactestClass", "CD Module (See ->)", 0));
+        moduleCheck->setText(QApplication::translate("uactestClass", "CD Module (+2.4% / Rank):", 0));
         moduleRankLabel->setText(QApplication::translate("uactestClass", "Module Rank:", 0));
+#ifndef QT_NO_TOOLTIP
+        moduleRank->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Cooldown Module Rank.</p><p>Each rank increases the cooldown modifier by 2.4%:</p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 1: +2.4%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 2: +4.8%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 3: +7.2%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; ma"
+                        "rgin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 4: +9.6%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 5: +12.0%</li></ul></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         loadoutBox->setTitle(QApplication::translate("uactestClass", "Loadout", 0));
         uacSelectLabel->setText(QApplication::translate("uactestClass", "UAC:", 0));
         uacSelect->clear();
@@ -459,8 +463,14 @@ public:
 #endif // QT_NO_TOOLTIP
         tDamageDisplay->setText(QApplication::translate("uactestClass", "damage", 0));
         overrideCdrBox->setTitle(QApplication::translate("uactestClass", "CDR Override", 0));
+#ifndef QT_NO_TOOLTIP
+        overrideConfirm->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Disables all Cooldown Modifiers and allows manual entry of CDR.</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         overrideConfirm->setText(QApplication::translate("uactestClass", "Override CDR?", 0));
-        overrideCdrValueLabel->setText(QApplication::translate("uactestClass", "Override Value:", 0));
+        overrideCdrValueLabel->setText(QApplication::translate("uactestClass", "Override Value (in %):", 0));
+#ifndef QT_NO_TOOLTIP
+        overrideCdrValue->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Cooldown Reduction value.</p><p>(Example: 12.0 = 12%, which is equivalent to a Rank 5 CD Module.)</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
     } // retranslateUi
 
 };
