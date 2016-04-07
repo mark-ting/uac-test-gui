@@ -1,6 +1,4 @@
 #include "uactest.h"
-#include "simulation.h"
-#include "uac.h"
 #include <QtConcurrent/QtConcurrentRun>
 
 uactest::uactest(QWidget *parent)
@@ -18,16 +16,6 @@ uactest::uactest(QWidget *parent)
 
 uactest::~uactest()
 {
-}
-
-void uactest::checkModuleEnabled(int index) {
-	if (index == 1) {
-		ui.moduleCheck->setCheckState(Qt::CheckState::Unchecked);
-		ui.moduleCheck->setEnabled(false);
-	}
-	else {
-		ui.moduleCheck->setEnabled(true);
-	}
 }
 
 void uactest::updateModifierUiState()
@@ -58,21 +46,6 @@ void uactest::updateModifierUiState()
 	ui.moduleRank->setEnabled(module_enabled);
 	ui.fastfireCheck->setEnabled(fastfire_enabled);
 	ui.overrideCdrValue->setEnabled(cdr_override_enabled);
-}
-
-void uactest::onToggleCdrOverride(bool checked) {
-	if (checked) {
-		ui.overrideCdrValue->setEnabled(true);
-		ui.fastfireCheck->setEnabled(false);
-		ui.moduleCheck->setEnabled(false);
-		ui.moduleRank->setEnabled(false);
-	}
-	else {
-		ui.overrideCdrValue->setEnabled(false);
-		ui.fastfireCheck->setEnabled(true);
-		ui.moduleCheck->setEnabled(true);
-		ui.moduleRank->setEnabled(true);
-	}
 }
 
 void uactest::onCalcButtonClicked() {

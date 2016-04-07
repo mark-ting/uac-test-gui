@@ -26,11 +26,7 @@ private:
 	Simulation s;
 
 	private slots:
-	void checkModuleEnabled(int index);
-
 	void updateModifierUiState();
-	void onToggleCdrOverride(bool checked);
-
 	void onCalcButtonClicked();
 	void checkCalcReady();
 	void calcComplete();
