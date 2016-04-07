@@ -1,6 +1,4 @@
 #include "uactest.h"
-#include "simulation.h"
-#include "uac.h"
 #include <QtConcurrent/QtConcurrentRun>
 
 uactest::uactest(QWidget *parent)
@@ -10,22 +8,14 @@ uactest::uactest(QWidget *parent)
 	ui.setupUi(this);
 	module_locked = false;
 
+	connect(&FutureWatcher, SIGNAL(finished()), this, SLOT(calcComplete()));
+
 	ui.progressBar->setMinimum(0);
 	ui.progressBar->setMaximum(1);
 }
 
 uactest::~uactest()
 {
-}
-
-void uactest::checkModuleEnabled(int index) {
-	if (index == 1) {
-		ui.moduleCheck->setCheckState(Qt::CheckState::Unchecked);
-		ui.moduleCheck->setEnabled(false);
-	}
-	else {
-		ui.moduleCheck->setEnabled(true);
-	}
 }
 
 void uactest::updateModifierUiState()
@@ -58,21 +48,6 @@ void uactest::updateModifierUiState()
 	ui.overrideCdrValue->setEnabled(cdr_override_enabled);
 }
 
-void uactest::onToggleCdrOverride(bool checked) {
-	if (checked) {
-		ui.overrideCdrValue->setEnabled(true);
-		ui.fastfireCheck->setEnabled(false);
-		ui.moduleCheck->setEnabled(false);
-		ui.moduleRank->setEnabled(false);
-	}
-	else {
-		ui.overrideCdrValue->setEnabled(false);
-		ui.fastfireCheck->setEnabled(true);
-		ui.moduleCheck->setEnabled(true);
-		ui.moduleRank->setEnabled(true);
-	}
-}
-
 void uactest::onCalcButtonClicked() {
 	// Disable interaction while running
 	ui.calcButton->setEnabled(false);
@@ -89,7 +64,6 @@ void uactest::onCalcButtonClicked() {
 	bool fastfire = ui.fastfireCheck->isChecked();
 
 	// Apply to simulation
-	s.setUac(uac);
 	s.overrideCdr(override_cdr);
 
 	if (override_cdr) {
@@ -101,9 +75,9 @@ void uactest::onCalcButtonClicked() {
 		s.setFastFire(fastfire);
 	}
 
-	QFuture<void> future = QtConcurrent::run(&this->s, &Simulation::run, ui.cycleCount->value());
+	// Run simulation with UAC and cycle count
+	QFuture<void> future = QtConcurrent::run(&this->s, &Simulation::run, uac, ui.cycleCount->value());
 	FutureWatcher.setFuture(future);
-	connect(&FutureWatcher, SIGNAL(finished()), this, SLOT(calcComplete()));
 }
 
 void uactest::checkCalcReady()
@@ -118,6 +92,8 @@ void uactest::checkCalcReady()
 
 void uactest::calcComplete()
 {
+	QApplication::beep();
+	QApplication::alert(this, 0);
 	ui.progressBar->setMaximum(1);
 	ui.damageDisplay->setText(QString::number(s.getDamage()));
 	ui.timeDisplay->setText(QString::number(s.getTime()));

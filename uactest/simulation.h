@@ -16,9 +16,7 @@ public:
 	double theoryDps() const;
 
 	void reset();
-	void run(int num_cycles);
-
-	void setUac(std::shared_ptr<Uac> uac);
+	void run(std::shared_ptr<Uac> uac, int num_cycles);
 
 	// Cool Down Reduction Override
 	void overrideCdr(bool over);
@@ -36,8 +34,6 @@ public:
 protected:
 	double calcModifier();
 	void calcTheoretical();
-
-	std::shared_ptr<Uac> uac_;
 
 	// Override Flags
 	bool override_cdr_;
