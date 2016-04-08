@@ -520,7 +520,7 @@
      <x>0</x>
      <y>0</y>
      <width>1020</width>
-     <height>38</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -552,11 +552,11 @@
    <sender>uacSelect</sender>
    <signal>currentIndexChanged(int)</signal>
    <receiver>uactestClass</receiver>
-   <slot>checkCalcReady()</slot>
+   <slot>checkParametersValid()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>41</x>
-     <y>188</y>
+     <x>53</x>
+     <y>181</y>
     </hint>
     <hint type="destinationlabel">
      <x>852</x>
@@ -568,15 +568,15 @@
    <sender>cycleCount</sender>
    <signal>valueChanged(int)</signal>
    <receiver>uactestClass</receiver>
-   <slot>checkCalcReady()</slot>
+   <slot>checkParametersValid()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>306</x>
      <y>171</y>
     </hint>
     <hint type="destinationlabel">
-     <x>853</x>
-     <y>257</y>
+     <x>445</x>
+     <y>238</y>
     </hint>
    </hints>
   </connection>
@@ -588,7 +588,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>37</x>
-     <y>460</y>
+     <y>423</y>
     </hint>
     <hint type="destinationlabel">
      <x>46</x>
@@ -607,8 +607,8 @@
      <y>181</y>
     </hint>
     <hint type="destinationlabel">
-     <x>851</x>
-     <y>182</y>
+     <x>578</x>
+     <y>73</y>
     </hint>
    </hints>
   </connection>
@@ -619,8 +619,8 @@
    <slot>updateModifierUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>664</x>
-     <y>138</y>
+     <x>711</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>852</x>
@@ -630,7 +630,7 @@
   </connection>
  </connections>
  <slots>
-  <slot>checkCalcReady()</slot>
+  <slot>checkParametersValid()</slot>
   <slot>onCalcButtonClicked()</slot>
   <slot>onToggleCdrOverride(bool)</slot>
   <slot>updateModifierUiState()</slot>
