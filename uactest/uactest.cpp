@@ -8,7 +8,8 @@ uactest::uactest(QWidget *parent)
 	ui.setupUi(this);
 	module_locked = false;
 
-	connect(&FutureWatcher, SIGNAL(finished()), this, SLOT(calcComplete()));
+	connect(&theoryWatcher, SIGNAL(finished()), this, SLOT(theoryComplete()));
+	connect(&simulationWatcher, SIGNAL(finished()), this, SLOT(simulationComplete()));
 
 	ui.progressBar->setMinimum(0);
 	ui.progressBar->setMaximum(1);
@@ -16,6 +17,16 @@ uactest::uactest(QWidget *parent)
 
 uactest::~uactest()
 {
+}
+
+void uactest::checkParametersValid()
+{
+	if (ui.cycleCount->value() > 0 && ui.uacSelect->currentIndex() > 0) {
+		ui.calcButton->setEnabled(true);
+	}
+	else {
+		ui.calcButton->setEnabled(false);
+	}
 }
 
 void uactest::updateModifierUiState()
@@ -55,7 +66,8 @@ void uactest::onCalcButtonClicked() {
 
 	// Fetch UAC and options
 	std::shared_ptr<Uac> uac = selectUac(ui.uacSelect->currentIndex());
-	
+	int num_cycles = ui.cycleCount->value();
+
 	bool override_cdr = ui.overrideConfirm->isChecked();
 	double override_cdr_value = ui.overrideCdrValue->value();
 
@@ -63,7 +75,7 @@ void uactest::onCalcButtonClicked() {
 	int module_rank = ui.moduleRank->value();
 	bool fastfire = ui.fastfireCheck->isChecked();
 
-	// Apply to simulation
+	// Pass values to simulation
 	s.overrideCdr(override_cdr);
 
 	if (override_cdr) {
@@ -75,28 +87,34 @@ void uactest::onCalcButtonClicked() {
 		s.setFastFire(fastfire);
 	}
 
+	// Calculate theortical results and update
+	s.calcTheoretical(uac, num_cycles);
+	displayTheoreticalResults();
+
 	// Run simulation with UAC and cycle count
-	QFuture<void> future = QtConcurrent::run(&this->s, &Simulation::run, uac, ui.cycleCount->value());
-	FutureWatcher.setFuture(future);
+	QFuture<void> simulation = QtConcurrent::run(&this->s, &Simulation::run, uac, num_cycles);
+	simulationWatcher.setFuture(simulation);
 }
 
-void uactest::checkCalcReady()
-{
-	if (ui.cycleCount->value() > 0 && ui.uacSelect->currentIndex() > 0) {
-		ui.calcButton->setEnabled(true);
-	}
-	else {
-		ui.calcButton->setEnabled(false);
-	}
-}
-
-void uactest::calcComplete()
+void uactest::simulationComplete()
 {
 	QApplication::beep();
 	QApplication::alert(this, 0);
+	displaySimulationResults();
 	ui.progressBar->setMaximum(1);
+	ui.calcButton->setEnabled(true);
+}
+
+void uactest::displayTheoreticalResults()
+{
+	ui.tDamageDisplay->setText(QString::number(s.theoryDamage()));
+	ui.tTimeDisplay->setText(QString::number(s.theoryTime()));
+	ui.tDpsDisplay->setText(QString::number(s.theoryDps()));
+}
+
+void uactest::displaySimulationResults()
+{
 	ui.damageDisplay->setText(QString::number(s.getDamage()));
 	ui.timeDisplay->setText(QString::number(s.getTime()));
 	ui.dpsDisplay->setText(QString::number(s.getDps()));
-	ui.calcButton->setEnabled(true);
 }

@@ -362,7 +362,7 @@ public:
         uactestClass->setStatusBar(statusBar);
         menuBar = new QMenuBar(uactestClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1020, 38));
+        menuBar->setGeometry(QRect(0, 0, 1020, 21));
         uactestClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(uactestClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -382,8 +382,8 @@ public:
         QWidget::setTabOrder(overrideCdrValue, calcButton);
 
         retranslateUi(uactestClass);
-        QObject::connect(uacSelect, SIGNAL(currentIndexChanged(int)), uactestClass, SLOT(checkCalcReady()));
-        QObject::connect(cycleCount, SIGNAL(valueChanged(int)), uactestClass, SLOT(checkCalcReady()));
+        QObject::connect(uacSelect, SIGNAL(currentIndexChanged(int)), uactestClass, SLOT(checkParametersValid()));
+        QObject::connect(cycleCount, SIGNAL(valueChanged(int)), uactestClass, SLOT(checkParametersValid()));
         QObject::connect(calcButton, SIGNAL(clicked()), uactestClass, SLOT(onCalcButtonClicked()));
         QObject::connect(uacSelect, SIGNAL(currentIndexChanged(int)), uactestClass, SLOT(updateModifierUiState()));
         QObject::connect(overrideConfirm, SIGNAL(toggled(bool)), uactestClass, SLOT(updateModifierUiState()));

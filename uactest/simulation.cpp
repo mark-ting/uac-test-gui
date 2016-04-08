@@ -33,10 +33,10 @@ void Simulation::run(std::shared_ptr<Uac> uac, int num_cycles)
 	reset();
 
 	double modifier = calcModifier();
-
 	double real_cooldown = uac->cooldown_ * (1 - modifier);
 	double jam_test;
 
+	// Simulation body
 	for (int cycle = 0; cycle < num_cycles; cycle++) {
 		// First Shot
 		total_damage_ += uac->damage_;
@@ -104,6 +104,11 @@ double Simulation::calcModifier()
 	}
 }
 
-void Simulation::calcTheoretical()
+void Simulation::calcTheoretical(std::shared_ptr<Uac> uac, int num_cycles)
 {
+	double modifier = calcModifier();
+	double real_cooldown = uac->cooldown_ * (1 - modifier);
+
+	theory_damage_ = (2 - uac->jam_chance_) * uac->damage_ * num_cycles;
+	theory_time_ = (real_cooldown + 5 * uac->jam_chance_)  * num_cycles;
 }

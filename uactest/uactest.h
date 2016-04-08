@@ -22,14 +22,20 @@ private:
 	std::default_random_engine rng;
 	std::uniform_real_distribution<float> dist{ 0.0, 1.0 };
 
-	QFutureWatcher<void> FutureWatcher;
+	QFutureWatcher<void> theoryWatcher;
+	QFutureWatcher<void> simulationWatcher;
+
 	Simulation s;
 
 	private slots:
+	void checkParametersValid();
 	void updateModifierUiState();
+
 	void onCalcButtonClicked();
-	void checkCalcReady();
-	void calcComplete();
+	void simulationComplete();
+
+	void displaySimulationResults();
+	void displayTheoreticalResults();
 };
 
 #endif // UACTEST_H
