@@ -29,34 +29,39 @@ void uactest::checkParametersValid()
 	}
 }
 
-void uactest::updateModifierUiState()
+void uactest::updateUiState()
 {
-	bool module_enabled;
-	bool fastfire_enabled;
-	bool cdr_override_enabled;
+	// Override Flags
+	bool cdr_override_enabled = ui.overrideCdrCheck->isChecked();
+	bool jam_override_enabled = ui.overrideJamCheck->isChecked();
 
-	// Override disables all modifiers
-	if (ui.overrideConfirm->isChecked()) {
+	// Specific Toggles
+	bool fastfire_enabled;
+	bool module_enabled;
+	bool cdr_quirk_enabled;
+
+	// UAC2 has no module
+	if (ui.uacSelect->currentIndex() == 1) {
 		module_enabled = false;
-		fastfire_enabled = false;
-		cdr_override_enabled = true;
 	}
 	else {
-		module_enabled = true;
-		fastfire_enabled = true;
-		cdr_override_enabled = false;
-
-		// UAC/2 has no module
-		if (ui.uacSelect->currentIndex() == 1) {
-			module_enabled = false;
-		}
+		module_enabled = !cdr_override_enabled;
 	}
 
-	// Update UI elements
+	// Update UI elements for Cooldown
+	ui.overrideCdrValue->setEnabled(cdr_override_enabled);
+	ui.fastfireCheck->setEnabled(!cdr_override_enabled);
 	ui.moduleCheck->setEnabled(module_enabled);
 	ui.moduleRank->setEnabled(module_enabled);
-	ui.fastfireCheck->setEnabled(fastfire_enabled);
-	ui.overrideCdrValue->setEnabled(cdr_override_enabled);
+	ui.generalCooldownCheck->setEnabled(!cdr_override_enabled);
+	ui.generalCooldownValue->setEnabled(!cdr_override_enabled);
+	ui.uacCooldownCheck->setEnabled(!cdr_override_enabled);
+	ui.uacCooldownValue->setEnabled(!cdr_override_enabled);
+
+	// Update UI elements for Jam Chance
+	ui.overrideJamValue->setEnabled(jam_override_enabled);
+	ui.uacJamChanceCheck->setEnabled(!jam_override_enabled);
+	ui.uacJamChanceValue->setEnabled(!jam_override_enabled);
 }
 
 void uactest::onCalcButtonClicked() {
@@ -68,26 +73,43 @@ void uactest::onCalcButtonClicked() {
 	std::shared_ptr<Uac> uac = selectUac(ui.uacSelect->currentIndex());
 	int num_cycles = ui.cycleCount->value();
 
-	bool override_cdr = ui.overrideConfirm->isChecked();
-	double override_cdr_value = ui.overrideCdrValue->value();
+	bool override_cdr = ui.overrideCdrCheck->isChecked();
+	bool override_jam = ui.overrideJamCheck->isChecked();
 
-	bool module = ui.moduleCheck->isChecked();
-	int module_rank = ui.moduleRank->value();
+	// Values entered in %
+	double custom_cdr = ui.overrideCdrValue->value() / 100;
+	double custom_jam = ui.overrideJamValue->value() / 100;
+
 	bool fastfire = ui.fastfireCheck->isChecked();
+	int module = ui.moduleCheck->isChecked() ? ui.moduleRank->value() : 0;
+
+	// Values entered in %
+	double ballistic_quirk = ui.generalCooldownValue->value() / 100;
+	double uac_quirk = ui.uacCooldownValue->value() / 100;
+	double jam_quirk = ui.generalCooldownValue->value() / 100;
 
 	// Pass values to simulation
 	s.overrideCdr(override_cdr);
+	s.overrideJam(override_jam);
 
 	if (override_cdr) {
-		s.setCdrValue(override_cdr_value / 100);
+		s.setCdrValue(custom_cdr);
 	}
 	else {
-		s.setModule(module);
-		s.setModuleRank(module_rank);
 		s.setFastFire(fastfire);
+		s.setModule(module);
+		s.setBallisticQuirk(ballistic_quirk);
+		s.setUacQuirk(uac_quirk);
 	}
 
-	// Calculate theortical results and update
+	if (override_jam) {
+		s.setJamValue(custom_jam);
+	}
+	else {
+		s.setJamQuirk(jam_quirk);
+	}
+
+	// Calculate theoretical results and update
 	s.calcTheoretical(uac, num_cycles);
 	displayTheoreticalResults();
 
