@@ -29,7 +29,7 @@ private:
 
 	private slots:
 	void checkParametersValid();
-	void updateModifierUiState();
+	void updateUiState();
 
 	void onCalcButtonClicked();
 	void simulationComplete();

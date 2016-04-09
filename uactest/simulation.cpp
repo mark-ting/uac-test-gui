@@ -6,11 +6,7 @@ std::uniform_real_distribution<double> dist(0.0, 1.0);
 
 Simulation::Simulation()
 {
-	fastfire_ = false;
-	module_ = false;
-
-	total_damage_ = 0.0;
-	time_ = 0.0;
+	reset();
 }
 
 Simulation::~Simulation()
@@ -33,7 +29,8 @@ void Simulation::run(std::shared_ptr<Uac> uac, int num_cycles)
 	reset();
 
 	double modifier = calcModifier();
-	double real_cooldown = uac->cooldown_ * (1 - modifier);
+	double cooldown = calcCooldown(uac->cooldown_);
+	double jam_chance = calcJamChance(uac->jam_chance_);
 	double jam_test;
 
 	// Simulation body
@@ -44,7 +41,7 @@ void Simulation::run(std::shared_ptr<Uac> uac, int num_cycles)
 		// Second Shot
 		jam_test = dist(rng);
 
-		if (jam_test > uac->jam_chance_) {
+		if (jam_test > jam_chance) {
 			// Double Tap
 			total_damage_ += uac->damage_;
 		}
@@ -55,7 +52,7 @@ void Simulation::run(std::shared_ptr<Uac> uac, int num_cycles)
 		}
 
 		// Cycle Weapon
-		time_ += real_cooldown;
+		time_ += cooldown;
 	}
 }
 
@@ -64,9 +61,19 @@ void Simulation::overrideCdr(bool over)
 	override_cdr_ = over;
 }
 
-void Simulation::setCdrValue(double cooldown)
+void Simulation::setCdrValue(double cdr)
 {
-	custom_cdr_ = cooldown;
+	custom_cdr_ = cdr;
+}
+
+void Simulation::overrideJam(bool over)
+{
+	override_jam_ = over;
+}
+
+void Simulation::setJamValue(double jam_chance)
+{
+	custom_jam_ = jam_chance;
 }
 
 void Simulation::setFastFire(bool fastfire)
@@ -74,14 +81,21 @@ void Simulation::setFastFire(bool fastfire)
 	fastfire_ = fastfire;
 }
 
-void Simulation::setModule(bool module)
-{
-	module_ = module;
-}
-
-void Simulation::setModuleRank(int rank)
+void Simulation::setModule(int rank)
 {
 	module_rank_ = rank;
+}
+
+void Simulation::setBallisticQuirk(double quirk) {
+	ballistic_quirk_ = quirk;
+}
+
+void Simulation::setUacQuirk(double quirk) {
+	uac_quirk_ = quirk;
+}
+
+void Simulation::setJamQuirk(double quirk) {
+	jam_quirk_ = quirk;
 }
 
 double Simulation::calcModifier()
@@ -92,23 +106,41 @@ double Simulation::calcModifier()
 	else {
 		double modifier = 0.0;
 
-		if (module_) {
-			modifier += (0.024 * module_rank_);
-		}
-
 		if (fastfire_) {
 			modifier += 0.05;
 		}
+		modifier += (0.024 * module_rank_);
+		modifier += ballistic_quirk_;
+		modifier += uac_quirk_;
 
 		return modifier;
 	}
 }
 
+double Simulation::calcCooldown(double base_cooldown) const
+{
+	double modifier = 0.0;
+
+	if (override_cdr_) {
+		modifier = custom_cdr_;
+	}
+	else {
+		if (fastfire_) {
+			modifier += 0.05;
+		}
+
+		modifier += (0.024 * module_rank_);
+		modifier += ballistic_quirk_;
+		modifier += uac_quirk_;
+	}
+
+	return base_cooldown * (1 - modifier);
+}
+
 void Simulation::calcTheoretical(std::shared_ptr<Uac> uac, int num_cycles)
 {
-	double modifier = calcModifier();
-	double real_cooldown = uac->cooldown_ * (1 - modifier);
+	double cooldown = calcCooldown(uac->cooldown_);
 
 	theory_damage_ = (2 - uac->jam_chance_) * uac->damage_ * num_cycles;
-	theory_time_ = (real_cooldown + 5 * uac->jam_chance_)  * num_cycles;
+	theory_time_ = (cooldown + 5 * uac->jam_chance_)  * num_cycles;
 }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1020</width>
-    <height>540</height>
+    <width>814</width>
+    <height>327</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -27,9 +27,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>220</y>
-      <width>231</width>
-      <height>171</height>
+      <y>110</y>
+      <width>111</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -39,13 +39,13 @@
      <string>For Science!</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="cooldownBox">
+   <widget class="QGroupBox" name="modifierBox">
     <property name="geometry">
      <rect>
       <x>340</x>
       <y>20</y>
-      <width>351</width>
-      <height>180</height>
+      <width>161</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="title">
@@ -54,45 +54,34 @@
     <property name="flat">
      <bool>false</bool>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <layout class="QVBoxLayout" name="modifierLayout">
-       <item>
-        <widget class="QCheckBox" name="fastfireCheck">
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables Fast Fire.&lt;/p&gt;&lt;p&gt;This results in 5% CDR.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="text">
-          <string>Fast Fire (+5%):</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="moduleCheck">
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables UAC Cooldown Module.&lt;/p&gt;&lt;p&gt;Set Module Rank below.&lt;/p&gt;&lt;p&gt;(Note: disabled for UAC2)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="text">
-          <string>CD Module (+2.4% / Rank):</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QCheckBox" name="fastfireCheck">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables Fast Fire.&lt;/p&gt;&lt;p&gt;+5% Cooldown Reduction.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>Fast Fire</string>
+       </property>
+      </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="moduleLayout">
-       <item alignment="Qt::AlignHCenter">
-        <widget class="QLabel" name="moduleRankLabel">
-         <property name="text">
-          <string>Module Rank:</string>
+       <item>
+        <widget class="QCheckBox" name="moduleCheck">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables Cooldown Module.&lt;/p&gt;&lt;p&gt;(Not available for UAC2.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
-         <property name="buddy">
-          <cstring>moduleRank</cstring>
+         <property name="text">
+          <string>CD Module Rank:</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QSpinBox" name="moduleRank">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cooldown Module Rank.&lt;/p&gt;&lt;p&gt;Each rank increases the cooldown modifier by 2.4%:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 1: +2.4%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 2: +4.8%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 3: +7.2%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 4: +9.6%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 5: +12.0%&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
@@ -120,7 +109,7 @@
       <x>20</x>
       <y>20</y>
       <width>311</width>
-      <height>141</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="title">
@@ -210,9 +199,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>400</y>
-      <width>981</width>
-      <height>27</height>
+      <y>230</y>
+      <width>781</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="maximum">
@@ -231,287 +220,392 @@
      <string>%p%</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="resultBox">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>210</y>
-      <width>361</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Results</string>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <layout class="QFormLayout" name="resultLayout">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
-       </property>
-       <property name="labelAlignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="formAlignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="horizontalSpacing">
-        <number>12</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>12</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="damageDisplayLabel">
-         <property name="text">
-          <string>Total Damage:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="damageDisplay">
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total damage dealt over all cycles.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
-         </property>
-         <property name="text">
-          <string>damage</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="timeDisplayLabel">
-         <property name="text">
-          <string>Total Time:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="timeDisplay">
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10&lt;span style=&quot; vertical-align:super;&quot;&gt;4&lt;/span&gt;+ cycles).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
-         </property>
-         <property name="text">
-          <string>time</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="dpsDisplayLabel">
-         <property name="text">
-          <string>Final DPS:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="dpsDisplay">
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Average DPS over all cycles.&lt;/p&gt;&lt;p&gt;More simply: Total Damage / Total Time&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
-         </property>
-         <property name="text">
-          <string>dps</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QGroupBox" name="theoryBox">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>210</y>
-      <width>360</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Theoretical</string>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <layout class="QFormLayout" name="theoryLayout">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
-       </property>
-       <property name="labelAlignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="formAlignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="horizontalSpacing">
-        <number>12</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>12</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="tDamageDisplayLabel">
-         <property name="text">
-          <string>EV(Dmg)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="tTimeDisplayLabel">
-         <property name="text">
-          <string>EV(Time)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="tTimeDisplay">
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10&lt;span style=&quot; vertical-align:super;&quot;&gt;4&lt;/span&gt;+ cycles).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
-         </property>
-         <property name="text">
-          <string>time</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="tDpsDisplayLabel">
-         <property name="text">
-          <string>EV(DPS)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="tDpsDisplay">
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Average DPS over all cycles.&lt;/p&gt;&lt;p&gt;More simply: Total Damage / Total Time&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
-         </property>
-         <property name="text">
-          <string>dps</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="tDamageDisplay">
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total damage dealt over all cycles.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
-         </property>
-         <property name="text">
-          <string>damage</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
    <widget class="QGroupBox" name="overrideCdrBox">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>670</x>
       <y>20</y>
-      <width>301</width>
-      <height>181</height>
+      <width>131</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="title">
      <string>CDR Override</string>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
       <layout class="QVBoxLayout" name="overrideCdrLayout">
        <item>
-        <widget class="QCheckBox" name="overrideConfirm">
+        <widget class="QCheckBox" name="overrideCdrCheck">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disables all Cooldown Modifiers and allows manual entry of CDR.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
-          <string>Override CDR?</string>
+          <string>Override CDR (%)</string>
          </property>
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="overrideCdrValueLayout">
-         <item alignment="Qt::AlignBottom">
-          <widget class="QLabel" name="overrideCdrValueLabel">
-           <property name="text">
-            <string>Override Value (in %):</string>
-           </property>
-           <property name="buddy">
-            <cstring>overrideCdrValue</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QDoubleSpinBox" name="overrideCdrValue">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cooldown Reduction value.&lt;/p&gt;&lt;p&gt;(Example: 12.0 = 12%, which is equivalent to a Rank 5 CD Module.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="decimals">
-            <number>3</number>
-           </property>
-           <property name="maximum">
-            <double>100.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QDoubleSpinBox" name="overrideCdrValue">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cooldown Reduction value.&lt;/p&gt;&lt;p&gt;(Example: 12.0 = 12%, which is equivalent to a Rank 5 CD Module.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="decimals">
+          <number>2</number>
+         </property>
+         <property name="maximum">
+          <double>100.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
     </layout>
    </widget>
-   <zorder>cooldownBox</zorder>
+   <widget class="QGroupBox" name="quirkBox">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>20</y>
+      <width>151</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Quirks</string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <layout class="QVBoxLayout" name="generalCooldownLayout">
+       <item>
+        <widget class="QCheckBox" name="generalCooldownCheck">
+         <property name="text">
+          <string>Ballistic Cooldown (%)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="generalCooldownValue">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="uacCooldownLayout">
+       <item>
+        <widget class="QCheckBox" name="uacCooldownCheck">
+         <property name="text">
+          <string>UAC Cooldown (%)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="uacCooldownValue">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="uacJamChanceLayout">
+       <item>
+        <widget class="QCheckBox" name="uacJamChanceCheck">
+         <property name="text">
+          <string>UAC Jam Chance (%)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="uacJamChanceValue">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QGroupBox" name="overrideJamBox">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>120</y>
+      <width>131</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Jam Chance Override</string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_7">
+     <item>
+      <layout class="QVBoxLayout" name="overrideJamLayout">
+       <item>
+        <widget class="QCheckBox" name="overrideJamCheck">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disables all Cooldown Modifiers and allows manual entry of CDR.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Override Jam (%)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="overrideJamValue">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cooldown Reduction value.&lt;/p&gt;&lt;p&gt;(Example: 12.0 = 12%, which is equivalent to a Rank 5 CD Module.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="decimals">
+          <number>2</number>
+         </property>
+         <property name="maximum">
+          <double>100.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>110</y>
+      <width>361</width>
+      <height>112</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QGroupBox" name="resultBox">
+       <property name="title">
+        <string>Results</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QFormLayout" name="resultLayout">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <property name="labelAlignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="formAlignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="horizontalSpacing">
+           <number>12</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>12</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="damageDisplayLabel">
+            <property name="text">
+             <string>Dmg:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="damageDisplay">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total damage dealt over all cycles.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>damage</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="timeDisplayLabel">
+            <property name="text">
+             <string>Time:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="timeDisplay">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10&lt;span style=&quot; vertical-align:super;&quot;&gt;4&lt;/span&gt;+ cycles).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>time</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="dpsDisplayLabel">
+            <property name="text">
+             <string>DPS:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="dpsDisplay">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Average DPS over all cycles.&lt;/p&gt;&lt;p&gt;More simply: Total Damage / Total Time&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>dps</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="theoryBox">
+       <property name="title">
+        <string>Theoretical</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QFormLayout" name="theoryLayout">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <property name="labelAlignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="formAlignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="horizontalSpacing">
+           <number>12</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>12</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="tDamageDisplayLabel">
+            <property name="text">
+             <string>EV(Dmg):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="tTimeDisplayLabel">
+            <property name="text">
+             <string>EV(Time):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="tTimeDisplay">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10&lt;span style=&quot; vertical-align:super;&quot;&gt;4&lt;/span&gt;+ cycles).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>time</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="tDpsDisplayLabel">
+            <property name="text">
+             <string>EV(DPS):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="tDpsDisplay">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Average DPS over all cycles.&lt;/p&gt;&lt;p&gt;More simply: Total Damage / Total Time&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>dps</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="tDamageDisplay">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total damage dealt over all cycles.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>damage</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>layoutWidget</zorder>
+   <zorder>modifierBox</zorder>
    <zorder>loadoutBox</zorder>
    <zorder>progressBar</zorder>
-   <zorder>resultBox</zorder>
-   <zorder>theoryBox</zorder>
    <zorder>overrideCdrBox</zorder>
    <zorder>calcButton</zorder>
+   <zorder>quirkBox</zorder>
+   <zorder>overrideJamBox</zorder>
+   <zorder>resultBox</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QMenuBar" name="menuBar">
@@ -519,7 +613,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1020</width>
+     <width>814</width>
      <height>21</height>
     </rect>
    </property>
@@ -540,7 +634,7 @@
   <tabstop>fastfireCheck</tabstop>
   <tabstop>moduleCheck</tabstop>
   <tabstop>moduleRank</tabstop>
-  <tabstop>overrideConfirm</tabstop>
+  <tabstop>overrideCdrCheck</tabstop>
   <tabstop>overrideCdrValue</tabstop>
   <tabstop>calcButton</tabstop>
  </tabstops>
@@ -548,38 +642,6 @@
   <include location="uactest.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>uacSelect</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>uactestClass</receiver>
-   <slot>checkParametersValid()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>53</x>
-     <y>181</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>852</x>
-     <y>257</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cycleCount</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>uactestClass</receiver>
-   <slot>checkParametersValid()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>306</x>
-     <y>171</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>445</x>
-     <y>238</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>calcButton</sender>
    <signal>clicked()</signal>
@@ -591,8 +653,8 @@
      <y>423</y>
     </hint>
     <hint type="destinationlabel">
-     <x>46</x>
-     <y>510</y>
+     <x>114</x>
+     <y>490</y>
     </hint>
    </hints>
   </connection>
@@ -600,31 +662,79 @@
    <sender>uacSelect</sender>
    <signal>currentIndexChanged(int)</signal>
    <receiver>uactestClass</receiver>
-   <slot>updateModifierUiState()</slot>
+   <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>181</y>
+     <x>106</x>
+     <y>121</y>
     </hint>
     <hint type="destinationlabel">
-     <x>578</x>
-     <y>73</y>
+     <x>136</x>
+     <y>176</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>overrideConfirm</sender>
+   <sender>uacSelect</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>checkParametersValid()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>65</x>
+     <y>121</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>223</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cycleCount</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>checkParametersValid()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>318</x>
+     <y>121</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>344</x>
+     <y>175</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>overrideCdrCheck</sender>
    <signal>toggled(bool)</signal>
    <receiver>uactestClass</receiver>
-   <slot>updateModifierUiState()</slot>
+   <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>711</x>
      <y>93</y>
     </hint>
     <hint type="destinationlabel">
-     <x>852</x>
-     <y>136</y>
+     <x>719</x>
+     <y>164</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>overrideJamCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>913</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>898</x>
+     <y>163</y>
     </hint>
    </hints>
   </connection>
@@ -633,6 +743,6 @@
   <slot>checkParametersValid()</slot>
   <slot>onCalcButtonClicked()</slot>
   <slot>onToggleCdrOverride(bool)</slot>
-  <slot>updateModifierUiState()</slot>
+  <slot>updateUiState()</slot>
  </slots>
 </ui>
