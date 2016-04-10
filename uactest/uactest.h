@@ -36,6 +36,7 @@ private:
 
 	void displayTheoreticalResults();
 	void displaySimulationResults();
+	void clearDisplays();
 };
 
 #endif // UACTEST_H

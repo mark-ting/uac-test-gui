@@ -9,7 +9,7 @@ uactest::uactest(QWidget *parent)
 	loadUacs();
 	ui.setupUi(this);
 	module_locked = false;
-	
+
 	connect(ui.actionE_xit, SIGNAL(triggered()), this, SLOT(close()));
 
 	connect(&theoryWatcher, SIGNAL(finished()), this, SLOT(theoryComplete()));
@@ -71,6 +71,7 @@ void uactest::updateUiState()
 void uactest::onCalcButtonClicked() {
 	// Disable interaction while running
 	ui.calcButton->setEnabled(false);
+	clearDisplays();
 
 	// Update with progress
 	ui.progressBar->setMaximum(0);
@@ -147,4 +148,14 @@ void uactest::displaySimulationResults()
 	ui.damageDisplay->setText(QString::number(s.getDamage()));
 	ui.timeDisplay->setText(QString::number(s.getTime()));
 	ui.dpsDisplay->setText(QString::number(s.getDps()));
+}
+
+void uactest::clearDisplays()
+{
+	ui.tDamageDisplay->clear();
+	ui.tTimeDisplay->clear();
+	ui.tDpsDisplay->clear();
+	ui.damageDisplay->clear();
+	ui.timeDisplay->clear();
+	ui.dpsDisplay->clear();
 }

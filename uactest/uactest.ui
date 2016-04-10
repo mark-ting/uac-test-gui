@@ -323,7 +323,7 @@
         <item>
          <widget class="QGroupBox" name="resultBox">
           <property name="title">
-           <string>Results</string>
+           <string>Simulation Results</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
@@ -365,7 +365,7 @@
                 <enum>QFrame::Sunken</enum>
                </property>
                <property name="text">
-                <string>damage</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -388,7 +388,7 @@
                 <enum>QFrame::Sunken</enum>
                </property>
                <property name="text">
-                <string>time</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -411,7 +411,7 @@
                 <enum>QFrame::Sunken</enum>
                </property>
                <property name="text">
-                <string>dps</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -423,7 +423,7 @@
         <item>
          <widget class="QGroupBox" name="theoryBox">
           <property name="title">
-           <string>Theoretical</string>
+           <string>Theoretical Results</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
@@ -472,7 +472,7 @@
                 <enum>QFrame::Sunken</enum>
                </property>
                <property name="text">
-                <string>time</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -495,7 +495,7 @@
                 <enum>QFrame::Sunken</enum>
                </property>
                <property name="text">
-                <string>dps</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -511,7 +511,7 @@
                 <enum>QFrame::Sunken</enum>
                </property>
                <property name="text">
-                <string>damage</string>
+                <string/>
                </property>
               </widget>
              </item>
