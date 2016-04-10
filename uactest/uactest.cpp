@@ -67,7 +67,10 @@ void uactest::updateUiState()
 void uactest::onCalcButtonClicked() {
 	// Disable interaction while running
 	ui.calcButton->setEnabled(false);
+
+	// Update with progress
 	ui.progressBar->setMaximum(0);
+	ui.statusBar->showMessage("Running...");
 
 	// Fetch UAC and options
 	std::shared_ptr<Uac> uac = selectUac(ui.uacSelect->currentIndex());
@@ -124,6 +127,7 @@ void uactest::simulationComplete()
 	QApplication::alert(this, 0);
 	displaySimulationResults();
 	ui.progressBar->setMaximum(1);
+	ui.statusBar->showMessage("Complete!");
 	ui.calcButton->setEnabled(true);
 }
 
