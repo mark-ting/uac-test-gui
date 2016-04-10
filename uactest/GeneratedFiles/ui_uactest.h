@@ -379,6 +379,7 @@ public:
         damageDisplay->setObjectName(QStringLiteral("damageDisplay"));
         damageDisplay->setFrameShape(QFrame::Box);
         damageDisplay->setFrameShadow(QFrame::Sunken);
+        damageDisplay->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
 
         resultLayout->setWidget(0, QFormLayout::FieldRole, damageDisplay);
 
@@ -391,6 +392,7 @@ public:
         timeDisplay->setObjectName(QStringLiteral("timeDisplay"));
         timeDisplay->setFrameShape(QFrame::Box);
         timeDisplay->setFrameShadow(QFrame::Sunken);
+        timeDisplay->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
 
         resultLayout->setWidget(1, QFormLayout::FieldRole, timeDisplay);
 
@@ -403,6 +405,7 @@ public:
         dpsDisplay->setObjectName(QStringLiteral("dpsDisplay"));
         dpsDisplay->setFrameShape(QFrame::Box);
         dpsDisplay->setFrameShadow(QFrame::Sunken);
+        dpsDisplay->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
 
         resultLayout->setWidget(2, QFormLayout::FieldRole, dpsDisplay);
 
@@ -441,6 +444,7 @@ public:
         tTimeDisplay->setObjectName(QStringLiteral("tTimeDisplay"));
         tTimeDisplay->setFrameShape(QFrame::Box);
         tTimeDisplay->setFrameShadow(QFrame::Sunken);
+        tTimeDisplay->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
 
         theoryLayout->setWidget(1, QFormLayout::FieldRole, tTimeDisplay);
 
@@ -453,6 +457,7 @@ public:
         tDpsDisplay->setObjectName(QStringLiteral("tDpsDisplay"));
         tDpsDisplay->setFrameShape(QFrame::Box);
         tDpsDisplay->setFrameShadow(QFrame::Sunken);
+        tDpsDisplay->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
 
         theoryLayout->setWidget(2, QFormLayout::FieldRole, tDpsDisplay);
 
@@ -460,6 +465,7 @@ public:
         tDamageDisplay->setObjectName(QStringLiteral("tDamageDisplay"));
         tDamageDisplay->setFrameShape(QFrame::Box);
         tDamageDisplay->setFrameShadow(QFrame::Sunken);
+        tDamageDisplay->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
 
         theoryLayout->setWidget(0, QFormLayout::FieldRole, tDamageDisplay);
 
@@ -592,38 +598,38 @@ public:
         moduleRank->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Cooldown Module Rank.</p><p>Each rank increases the cooldown modifier by 2.4%:</p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 1: +2.4%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 2: +4.8%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 3: +7.2%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; ma"
                         "rgin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 4: +9.6%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 5: +12.0%</li></ul></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        resultBox->setTitle(QApplication::translate("uactestClass", "Results", 0));
+        resultBox->setTitle(QApplication::translate("uactestClass", "Simulation Results", 0));
         damageDisplayLabel->setText(QApplication::translate("uactestClass", "Dmg:", 0));
 #ifndef QT_NO_TOOLTIP
         damageDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total damage dealt over all cycles.</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        damageDisplay->setText(QApplication::translate("uactestClass", "damage", 0));
+        damageDisplay->setText(QString());
         timeDisplayLabel->setText(QApplication::translate("uactestClass", "Time:", 0));
 #ifndef QT_NO_TOOLTIP
         timeDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).</p><p><br/>Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10<span style=\" vertical-align:super;\">4</span>+ cycles).</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        timeDisplay->setText(QApplication::translate("uactestClass", "time", 0));
+        timeDisplay->setText(QString());
         dpsDisplayLabel->setText(QApplication::translate("uactestClass", "DPS:", 0));
 #ifndef QT_NO_TOOLTIP
         dpsDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Average DPS over all cycles.</p><p>More simply: Total Damage / Total Time</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        dpsDisplay->setText(QApplication::translate("uactestClass", "dps", 0));
-        theoryBox->setTitle(QApplication::translate("uactestClass", "Theoretical", 0));
+        dpsDisplay->setText(QString());
+        theoryBox->setTitle(QApplication::translate("uactestClass", "Theoretical Results", 0));
         tDamageDisplayLabel->setText(QApplication::translate("uactestClass", "EV(Dmg):", 0));
         tTimeDisplayLabel->setText(QApplication::translate("uactestClass", "EV(Time):", 0));
 #ifndef QT_NO_TOOLTIP
         tTimeDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).</p><p><br/>Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10<span style=\" vertical-align:super;\">4</span>+ cycles).</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        tTimeDisplay->setText(QApplication::translate("uactestClass", "time", 0));
+        tTimeDisplay->setText(QString());
         tDpsDisplayLabel->setText(QApplication::translate("uactestClass", "EV(DPS):", 0));
 #ifndef QT_NO_TOOLTIP
         tDpsDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Average DPS over all cycles.</p><p>More simply: Total Damage / Total Time</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        tDpsDisplay->setText(QApplication::translate("uactestClass", "dps", 0));
+        tDpsDisplay->setText(QString());
 #ifndef QT_NO_TOOLTIP
         tDamageDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total damage dealt over all cycles.</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        tDamageDisplay->setText(QApplication::translate("uactestClass", "damage", 0));
+        tDamageDisplay->setText(QString());
         progressBar->setFormat(QApplication::translate("uactestClass", "%p%", 0));
 #ifndef QT_NO_TOOLTIP
         calcButton->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>FOR SCIENCE!</p></body></html>", 0));
