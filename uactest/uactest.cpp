@@ -1,5 +1,7 @@
 #include "uactest.h"
 #include <QtConcurrent/QtConcurrentRun>
+#include <qdesktopservices.h>
+#include <qurl.h>
 
 uactest::uactest(QWidget *parent)
 	: QMainWindow(parent)
@@ -7,6 +9,8 @@ uactest::uactest(QWidget *parent)
 	loadUacs();
 	ui.setupUi(this);
 	module_locked = false;
+	
+	connect(ui.actionE_xit, SIGNAL(triggered()), this, SLOT(close()));
 
 	connect(&theoryWatcher, SIGNAL(finished()), this, SLOT(theoryComplete()));
 	connect(&simulationWatcher, SIGNAL(finished()), this, SLOT(simulationComplete()));

@@ -23,6 +23,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
@@ -37,6 +38,12 @@ QT_BEGIN_NAMESPACE
 class Ui_uactestClass
 {
 public:
+    QAction *actionQuit;
+    QAction *actionAbout;
+    QAction *actionLegal;
+    QAction *action_About;
+    QAction *action_Legal;
+    QAction *actionE_xit;
     QWidget *centralWidget;
     QGridLayout *gridLayout_2;
     QGridLayout *uactestLayout;
@@ -99,8 +106,9 @@ public:
     QProgressBar *progressBar;
     QPushButton *calcButton;
     QStatusBar *statusBar;
-    QMenuBar *menuBar;
     QToolBar *mainToolBar;
+    QMenuBar *menuBar;
+    QMenu *menu_Program;
 
     void setupUi(QMainWindow *uactestClass)
     {
@@ -112,6 +120,18 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(uactestClass->sizePolicy().hasHeightForWidth());
         uactestClass->setSizePolicy(sizePolicy);
+        actionQuit = new QAction(uactestClass);
+        actionQuit->setObjectName(QStringLiteral("actionQuit"));
+        actionAbout = new QAction(uactestClass);
+        actionAbout->setObjectName(QStringLiteral("actionAbout"));
+        actionLegal = new QAction(uactestClass);
+        actionLegal->setObjectName(QStringLiteral("actionLegal"));
+        action_About = new QAction(uactestClass);
+        action_About->setObjectName(QStringLiteral("action_About"));
+        action_Legal = new QAction(uactestClass);
+        action_Legal->setObjectName(QStringLiteral("action_Legal"));
+        actionE_xit = new QAction(uactestClass);
+        actionE_xit->setObjectName(QStringLiteral("actionE_xit"));
         centralWidget = new QWidget(uactestClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout_2 = new QGridLayout(centralWidget);
@@ -479,13 +499,15 @@ public:
         statusBar = new QStatusBar(uactestClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         uactestClass->setStatusBar(statusBar);
-        menuBar = new QMenuBar(uactestClass);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1167, 38));
-        uactestClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(uactestClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         uactestClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
+        menuBar = new QMenuBar(uactestClass);
+        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 1167, 38));
+        menu_Program = new QMenu(menuBar);
+        menu_Program->setObjectName(QStringLiteral("menu_Program"));
+        uactestClass->setMenuBar(menuBar);
 #ifndef QT_NO_SHORTCUT
         uacSelectLabel->setBuddy(uacSelect);
         cycleCountLabel->setBuddy(cycleCount);
@@ -496,6 +518,9 @@ public:
         QWidget::setTabOrder(moduleCheck, moduleRank);
         QWidget::setTabOrder(moduleRank, overrideCdrCheck);
         QWidget::setTabOrder(overrideCdrCheck, overrideCdrValue);
+
+        menuBar->addAction(menu_Program->menuAction());
+        menu_Program->addAction(actionE_xit);
 
         retranslateUi(uactestClass);
         QObject::connect(calcButton, SIGNAL(clicked()), uactestClass, SLOT(onCalcButtonClicked()));
@@ -511,6 +536,12 @@ public:
     void retranslateUi(QMainWindow *uactestClass)
     {
         uactestClass->setWindowTitle(QApplication::translate("uactestClass", "UAC Test", 0));
+        actionQuit->setText(QApplication::translate("uactestClass", "Quit", 0));
+        actionAbout->setText(QApplication::translate("uactestClass", "About", 0));
+        actionLegal->setText(QApplication::translate("uactestClass", "Legal", 0));
+        action_About->setText(QApplication::translate("uactestClass", "&About", 0));
+        action_Legal->setText(QApplication::translate("uactestClass", "&Legal", 0));
+        actionE_xit->setText(QApplication::translate("uactestClass", "E&xit", 0));
         loadoutBox->setTitle(QApplication::translate("uactestClass", "Loadout", 0));
         uacSelectLabel->setText(QApplication::translate("uactestClass", "UAC:", 0));
         uacSelect->clear();
@@ -598,6 +629,7 @@ public:
         calcButton->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>FOR SCIENCE!</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         calcButton->setText(QApplication::translate("uactestClass", "For Science!", 0));
+        menu_Program->setTitle(QApplication::translate("uactestClass", "&Program", 0));
     } // retranslateUi
 
 };

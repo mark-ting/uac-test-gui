@@ -565,6 +565,14 @@
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -574,15 +582,44 @@
      <height>38</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu_Program">
+    <property name="title">
+     <string>&amp;Program</string>
+    </property>
+    <addaction name="actionE_xit"/>
+   </widget>
+   <addaction name="menu_Program"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionLegal">
+   <property name="text">
+    <string>Legal</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="action_Legal">
+   <property name="text">
+    <string>&amp;Legal</string>
+   </property>
+  </action>
+  <action name="actionE_xit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
@@ -621,8 +658,8 @@
    <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>208</y>
+     <x>104</x>
+     <y>206</y>
     </hint>
     <hint type="destinationlabel">
      <x>136</x>
@@ -637,8 +674,8 @@
    <slot>checkParametersValid()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>87</x>
-     <y>208</y>
+     <x>104</x>
+     <y>206</y>
     </hint>
     <hint type="destinationlabel">
      <x>135</x>
@@ -653,8 +690,8 @@
    <slot>checkParametersValid()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>268</x>
-     <y>208</y>
+     <x>246</x>
+     <y>206</y>
     </hint>
     <hint type="destinationlabel">
      <x>344</x>
@@ -669,8 +706,8 @@
    <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1148</x>
-     <y>158</y>
+     <x>1126</x>
+     <y>156</y>
     </hint>
     <hint type="destinationlabel">
      <x>719</x>
@@ -685,8 +722,8 @@
    <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1148</x>
-     <y>318</y>
+     <x>1126</x>
+     <y>316</y>
     </hint>
     <hint type="destinationlabel">
      <x>898</x>
