@@ -34,8 +34,9 @@ private:
 	void onCalcButtonClicked();
 	void simulationComplete();
 
-	void displaySimulationResults();
 	void displayTheoreticalResults();
+	void displaySimulationResults();
+	void clearDisplays();
 };
 
 #endif // UACTEST_H

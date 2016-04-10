@@ -1,5 +1,7 @@
 #include "uactest.h"
 #include <QtConcurrent/QtConcurrentRun>
+#include <qdesktopservices.h>
+#include <qurl.h>
 
 uactest::uactest(QWidget *parent)
 	: QMainWindow(parent)
@@ -7,6 +9,8 @@ uactest::uactest(QWidget *parent)
 	loadUacs();
 	ui.setupUi(this);
 	module_locked = false;
+
+	connect(ui.actionE_xit, SIGNAL(triggered()), this, SLOT(close()));
 
 	connect(&theoryWatcher, SIGNAL(finished()), this, SLOT(theoryComplete()));
 	connect(&simulationWatcher, SIGNAL(finished()), this, SLOT(simulationComplete()));
@@ -67,7 +71,11 @@ void uactest::updateUiState()
 void uactest::onCalcButtonClicked() {
 	// Disable interaction while running
 	ui.calcButton->setEnabled(false);
+	clearDisplays();
+
+	// Update with progress
 	ui.progressBar->setMaximum(0);
+	ui.statusBar->showMessage("Running...");
 
 	// Fetch UAC and options
 	std::shared_ptr<Uac> uac = selectUac(ui.uacSelect->currentIndex());
@@ -124,6 +132,7 @@ void uactest::simulationComplete()
 	QApplication::alert(this, 0);
 	displaySimulationResults();
 	ui.progressBar->setMaximum(1);
+	ui.statusBar->showMessage("Complete!");
 	ui.calcButton->setEnabled(true);
 }
 
@@ -139,4 +148,14 @@ void uactest::displaySimulationResults()
 	ui.damageDisplay->setText(QString::number(s.getDamage()));
 	ui.timeDisplay->setText(QString::number(s.getTime()));
 	ui.dpsDisplay->setText(QString::number(s.getDps()));
+}
+
+void uactest::clearDisplays()
+{
+	ui.tDamageDisplay->clear();
+	ui.tTimeDisplay->clear();
+	ui.tDpsDisplay->clear();
+	ui.damageDisplay->clear();
+	ui.timeDisplay->clear();
+	ui.dpsDisplay->clear();
 }
