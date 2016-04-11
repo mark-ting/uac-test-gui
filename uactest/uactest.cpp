@@ -1,22 +1,16 @@
 #include "uactest.h"
 #include <QtConcurrent/QtConcurrentRun>
-#include <qdesktopservices.h>
-#include <qurl.h>
+#include <QDesktopServices>
+#include <QUrl>
 
 uactest::uactest(QWidget *parent)
 	: QMainWindow(parent)
 {
 	loadUacs();
 	ui.setupUi(this);
-	module_locked = false;
-
-	connect(ui.actionE_xit, SIGNAL(triggered()), this, SLOT(close()));
 
 	connect(&theoryWatcher, SIGNAL(finished()), this, SLOT(theoryComplete()));
 	connect(&simulationWatcher, SIGNAL(finished()), this, SLOT(simulationComplete()));
-
-	ui.progressBar->setMinimum(0);
-	ui.progressBar->setMaximum(1);
 }
 
 uactest::~uactest()
@@ -36,36 +30,41 @@ void uactest::checkParametersValid()
 void uactest::updateUiState()
 {
 	// Override Flags
-	bool cdr_override_enabled = ui.overrideCdrCheck->isChecked();
-	bool jam_override_enabled = ui.overrideJamCheck->isChecked();
+	bool cdr_override = ui.overrideCdrCheck->isChecked();
+	bool jam_override = ui.overrideJamCheck->isChecked();
 
 	// Specific Toggles
-	bool fastfire_enabled;
-	bool module_enabled;
-	bool cdr_quirk_enabled;
+	bool fastfire_enabled = !cdr_override;
 
-	// UAC2 has no module
-	if (ui.uacSelect->currentIndex() == 1) {
-		module_enabled = false;
-	}
-	else {
-		module_enabled = !cdr_override_enabled;
-	}
+	bool module_enabled = !cdr_override && !(ui.uacSelect->currentIndex() == 1);  // UAC2 has no module
+	bool module_rank_enabled = module_enabled && ui.moduleCheck->isChecked();;
 
-	// Update UI elements for Cooldown
-	ui.overrideCdrValue->setEnabled(cdr_override_enabled);
-	ui.fastfireCheck->setEnabled(!cdr_override_enabled);
+	bool general_quirk_enabled = !cdr_override;
+	bool general_quirk_editable = general_quirk_enabled && ui.generalCooldownCheck->isChecked();
+
+	bool uac_quirk_enabled = !cdr_override;
+	bool uac_quirk_editable = uac_quirk_enabled && ui.uacCooldownCheck->isChecked();
+
+	bool jam_quirk_enabled = !jam_override;
+	bool jam_quirk_editable = jam_quirk_enabled && ui.uacJamChanceCheck->isChecked();
+
+	// Update UI Elements
+	ui.fastfireCheck->setEnabled(fastfire_enabled);
+
 	ui.moduleCheck->setEnabled(module_enabled);
-	ui.moduleRank->setEnabled(module_enabled);
-	ui.generalCooldownCheck->setEnabled(!cdr_override_enabled);
-	ui.generalCooldownValue->setEnabled(!cdr_override_enabled);
-	ui.uacCooldownCheck->setEnabled(!cdr_override_enabled);
-	ui.uacCooldownValue->setEnabled(!cdr_override_enabled);
+	ui.moduleRank->setEnabled(module_rank_enabled);
 
-	// Update UI elements for Jam Chance
-	ui.overrideJamValue->setEnabled(jam_override_enabled);
-	ui.uacJamChanceCheck->setEnabled(!jam_override_enabled);
-	ui.uacJamChanceValue->setEnabled(!jam_override_enabled);
+	ui.generalCooldownCheck->setEnabled(general_quirk_enabled);
+	ui.generalCooldownValue->setEnabled(general_quirk_editable);
+
+	ui.uacCooldownCheck->setEnabled(uac_quirk_enabled);
+	ui.uacCooldownValue->setEnabled(uac_quirk_editable);
+
+	ui.uacJamChanceCheck->setEnabled(jam_quirk_enabled);
+	ui.uacJamChanceValue->setEnabled(jam_quirk_editable);
+
+	ui.overrideCdrValue->setEnabled(cdr_override);
+	ui.overrideJamValue->setEnabled(jam_override);
 }
 
 void uactest::onCalcButtonClicked() {
@@ -158,4 +157,14 @@ void uactest::clearDisplays()
 	ui.damageDisplay->clear();
 	ui.timeDisplay->clear();
 	ui.dpsDisplay->clear();
+}
+
+void uactest::showAbout()
+{
+	QDesktopServices::openUrl(QUrl("https://github.com/mat3049/uac-test-gui/", QUrl::TolerantMode));
+}
+
+void uactest::showLegal()
+{
+	QDesktopServices::openUrl(QUrl("https://github.com/mat3049/uac-test-gui/wiki/Legal", QUrl::TolerantMode));
 }

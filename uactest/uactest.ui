@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1167</width>
-    <height>679</height>
+    <width>637</width>
+    <height>398</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -215,7 +215,7 @@
            <item>
             <widget class="QDoubleSpinBox" name="generalCooldownValue">
              <property name="enabled">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -233,7 +233,7 @@
            <item>
             <widget class="QDoubleSpinBox" name="uacCooldownValue">
              <property name="enabled">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -251,7 +251,7 @@
            <item>
             <widget class="QDoubleSpinBox" name="uacJamChanceValue">
              <property name="enabled">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -294,7 +294,7 @@
            <item>
             <widget class="QSpinBox" name="moduleRank">
              <property name="enabled">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cooldown Module Rank.&lt;/p&gt;&lt;p&gt;Each rank increases the cooldown modifier by 2.4%:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 1: +2.4%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 2: +4.8%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 3: +7.2%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 4: +9.6%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 5: +12.0%&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -367,6 +367,9 @@
                <property name="text">
                 <string/>
                </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+               </property>
               </widget>
              </item>
              <item row="1" column="0">
@@ -390,6 +393,9 @@
                <property name="text">
                 <string/>
                </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+               </property>
               </widget>
              </item>
              <item row="2" column="0">
@@ -412,6 +418,9 @@
                </property>
                <property name="text">
                 <string/>
+               </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
                </property>
               </widget>
              </item>
@@ -474,6 +483,9 @@
                <property name="text">
                 <string/>
                </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+               </property>
               </widget>
              </item>
              <item row="2" column="0">
@@ -497,6 +509,9 @@
                <property name="text">
                 <string/>
                </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+               </property>
               </widget>
              </item>
              <item row="0" column="1">
@@ -512,6 +527,9 @@
                </property>
                <property name="text">
                 <string/>
+               </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
                </property>
               </widget>
              </item>
@@ -578,31 +596,23 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1167</width>
-     <height>38</height>
+     <width>637</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Program">
     <property name="title">
      <string>&amp;Program</string>
     </property>
+    <addaction name="action_About"/>
+    <addaction name="action_Legal"/>
     <addaction name="actionE_xit"/>
    </widget>
    <addaction name="menu_Program"/>
   </widget>
-  <action name="actionQuit">
+  <action name="actionE_xit">
    <property name="text">
-    <string>Quit</string>
-   </property>
-  </action>
-  <action name="actionAbout">
-   <property name="text">
-    <string>About</string>
-   </property>
-  </action>
-  <action name="actionLegal">
-   <property name="text">
-    <string>Legal</string>
+    <string>E&amp;xit</string>
    </property>
   </action>
   <action name="action_About">
@@ -615,11 +625,6 @@
     <string>&amp;Legal</string>
    </property>
   </action>
-  <action name="actionE_xit">
-   <property name="text">
-    <string>E&amp;xit</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
@@ -628,8 +633,17 @@
   <tabstop>fastfireCheck</tabstop>
   <tabstop>moduleCheck</tabstop>
   <tabstop>moduleRank</tabstop>
+  <tabstop>generalCooldownCheck</tabstop>
+  <tabstop>generalCooldownValue</tabstop>
+  <tabstop>uacCooldownCheck</tabstop>
+  <tabstop>uacCooldownValue</tabstop>
+  <tabstop>uacJamChanceCheck</tabstop>
+  <tabstop>uacJamChanceValue</tabstop>
   <tabstop>overrideCdrCheck</tabstop>
   <tabstop>overrideCdrValue</tabstop>
+  <tabstop>overrideJamCheck</tabstop>
+  <tabstop>overrideJamValue</tabstop>
+  <tabstop>calcButton</tabstop>
  </tabstops>
  <resources>
   <include location="uactest.qrc"/>
@@ -642,8 +656,8 @@
    <slot>onCalcButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>38</x>
-     <y>513</y>
+     <x>48</x>
+     <y>340</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -658,8 +672,8 @@
    <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>206</y>
+     <x>59</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>136</x>
@@ -674,8 +688,8 @@
    <slot>checkParametersValid()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>206</y>
+     <x>59</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>135</x>
@@ -690,8 +704,8 @@
    <slot>checkParametersValid()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>246</x>
-     <y>206</y>
+     <x>146</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>344</x>
@@ -706,8 +720,8 @@
    <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1126</x>
-     <y>156</y>
+     <x>614</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>719</x>
@@ -722,12 +736,124 @@
    <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1126</x>
-     <y>316</y>
+     <x>614</x>
+     <y>178</y>
     </hint>
     <hint type="destinationlabel">
      <x>898</x>
      <y>163</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionE_xit</sender>
+   <signal>triggered()</signal>
+   <receiver>uactestClass</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>583</x>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_About</sender>
+   <signal>triggered()</signal>
+   <receiver>uactestClass</receiver>
+   <slot>showLegal()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>583</x>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_Legal</sender>
+   <signal>triggered()</signal>
+   <receiver>uactestClass</receiver>
+   <slot>showAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>583</x>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moduleCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>228</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>generalCooldownCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>uacCooldownCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>126</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>uacJamChanceCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>198</y>
     </hint>
    </hints>
   </connection>
@@ -737,5 +863,7 @@
   <slot>onCalcButtonClicked()</slot>
   <slot>onToggleCdrOverride(bool)</slot>
   <slot>updateUiState()</slot>
+  <slot>showAbout()</slot>
+  <slot>showLegal()</slot>
  </slots>
 </ui>
