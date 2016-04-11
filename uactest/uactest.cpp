@@ -140,6 +140,7 @@ void uactest::displayTheoreticalResults()
 	ui.tDamageDisplay->setText(QString::number(s.theoryDamage()));
 	ui.tTimeDisplay->setText(QString::number(s.theoryTime()));
 	ui.tDpsDisplay->setText(QString::number(s.theoryDps()));
+	ui.tJamDisplay->setText(QString::number(s.theoryJams()));
 }
 
 void uactest::displaySimulationResults()
@@ -147,6 +148,7 @@ void uactest::displaySimulationResults()
 	ui.damageDisplay->setText(QString::number(s.getDamage()));
 	ui.timeDisplay->setText(QString::number(s.getTime()));
 	ui.dpsDisplay->setText(QString::number(s.getDps()));
+	ui.jamDisplay->setText(QString::number(s.getJams()));
 }
 
 void uactest::clearDisplays()
@@ -154,9 +156,12 @@ void uactest::clearDisplays()
 	ui.tDamageDisplay->clear();
 	ui.tTimeDisplay->clear();
 	ui.tDpsDisplay->clear();
+	ui.tJamDisplay->clear();
+
 	ui.damageDisplay->clear();
 	ui.timeDisplay->clear();
 	ui.dpsDisplay->clear();
+	ui.jamDisplay->clear();
 }
 
 void uactest::showAbout()

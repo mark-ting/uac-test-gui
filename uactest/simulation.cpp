@@ -18,10 +18,12 @@ void Simulation::reset()
 	// Reset experimental vals
 	total_damage_ = 0.0;
 	time_ = 0.0;
+	jams_ = 0;
 
 	// Reset theoretical vals
 	theory_damage_ = 0.0;
 	theory_time_ = 0.0;
+	theory_jams_ = 0;
 }
 
 void Simulation::run(std::shared_ptr<Uac> uac, int num_cycles)
@@ -49,6 +51,7 @@ void Simulation::run(std::shared_ptr<Uac> uac, int num_cycles)
 		{
 			// Jammed
 			time_ += 5.0;
+			jams_++;
 		}
 
 		// Cycle Weapon
@@ -140,7 +143,9 @@ double Simulation::calcCooldown(double base_cooldown) const
 void Simulation::calcTheoretical(std::shared_ptr<Uac> uac, int num_cycles)
 {
 	double cooldown = calcCooldown(uac->cooldown_);
+	double jam_chance = calcJamChance(uac->jam_chance_);
 
-	theory_damage_ = (2 - uac->jam_chance_) * uac->damage_ * num_cycles;
-	theory_time_ = (cooldown + 5 * uac->jam_chance_)  * num_cycles;
+	theory_damage_ = (2 - jam_chance) * uac->damage_ * num_cycles;
+	theory_time_ = (cooldown + 5 * jam_chance)  * num_cycles;
+	theory_jams_ = jam_chance * num_cycles;
 }

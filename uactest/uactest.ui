@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>637</width>
-    <height>398</height>
+    <height>427</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -23,92 +23,6 @@
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <layout class="QGridLayout" name="uactestLayout">
-      <item row="0" column="0" colspan="2">
-       <widget class="QGroupBox" name="loadoutBox">
-        <property name="title">
-         <string>Loadout</string>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0">
-         <item>
-          <layout class="QHBoxLayout" name="loadoutLayout" stretch="1,2">
-           <item>
-            <layout class="QVBoxLayout" name="uacSelectLayout" stretch="0,0">
-             <item alignment="Qt::AlignBottom">
-              <widget class="QLabel" name="uacSelectLabel">
-               <property name="text">
-                <string>UAC:</string>
-               </property>
-               <property name="buddy">
-                <cstring>uacSelect</cstring>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="uacSelect">
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UAC to test.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <item>
-                <property name="text">
-                 <string/>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>5</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>10</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>20</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="cycleCountLayout" stretch="0,0">
-             <item alignment="Qt::AlignBottom">
-              <widget class="QLabel" name="cycleCountLabel">
-               <property name="text">
-                <string>Cycles:</string>
-               </property>
-               <property name="buddy">
-                <cstring>cycleCount</cstring>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="cycleCount">
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of double-tap cycles to be tested over.&lt;/p&gt;&lt;p&gt;Min: 10000 (ensures accuracy)&lt;/p&gt;&lt;p&gt;Max: 100000000 (10&lt;span style=&quot; vertical-align:super;&quot;&gt;8&lt;/span&gt;; you may not want to go over 10&lt;span style=&quot; vertical-align:super;&quot;&gt;7&lt;/span&gt; anyways)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="minimum">
-                <number>10000</number>
-               </property>
-               <property name="maximum">
-                <number>100000000</number>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </item>
       <item row="0" column="4" rowspan="2">
        <layout class="QVBoxLayout" name="overrideLayout">
         <item>
@@ -193,9 +107,48 @@
             </layout>
            </item>
           </layout>
+          <zorder>overrideCdrBox</zorder>
          </widget>
         </item>
        </layout>
+      </item>
+      <item row="3" column="0" colspan="5">
+       <widget class="QProgressBar" name="progressBar">
+        <property name="maximum">
+         <number>1</number>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+        <property name="textVisible">
+         <bool>false</bool>
+        </property>
+        <property name="invertedAppearance">
+         <bool>false</bool>
+        </property>
+        <property name="format">
+         <string>%p%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="calcButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;FOR SCIENCE!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>For Science!</string>
+        </property>
+       </widget>
       </item>
       <item row="0" column="3" rowspan="2">
        <widget class="QGroupBox" name="quirkBox">
@@ -252,64 +205,6 @@
             <widget class="QDoubleSpinBox" name="uacJamChanceValue">
              <property name="enabled">
               <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QGroupBox" name="modifierBox">
-        <property name="title">
-         <string>Cooldown Modifiers</string>
-        </property>
-        <property name="flat">
-         <bool>false</bool>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QCheckBox" name="fastfireCheck">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables Fast Fire.&lt;/p&gt;&lt;p&gt;+5% Cooldown Reduction.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Fast Fire</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="moduleLayout">
-           <item>
-            <widget class="QCheckBox" name="moduleCheck">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables Cooldown Module.&lt;/p&gt;&lt;p&gt;(Not available for UAC2.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="text">
-              <string>CD Module Rank:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="moduleRank">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cooldown Module Rank.&lt;/p&gt;&lt;p&gt;Each rank increases the cooldown modifier by 2.4%:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 1: +2.4%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 2: +4.8%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 3: +7.2%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 4: +9.6%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 5: +12.0%&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="minimum">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <number>5</number>
              </property>
             </widget>
            </item>
@@ -424,6 +319,26 @@
                </property>
               </widget>
              </item>
+             <item row="3" column="1">
+              <widget class="QLabel" name="jamDisplay">
+               <property name="frameShape">
+                <enum>QFrame::Box</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="jamDisplayLabel">
+               <property name="text">
+                <string>Jams:</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
           </layout>
@@ -495,25 +410,6 @@
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
-              <widget class="QLabel" name="tDpsDisplay">
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Average DPS over all cycles.&lt;/p&gt;&lt;p&gt;More simply: Total Damage / Total Time&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::Box</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Sunken</enum>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="textInteractionFlags">
-                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="1">
               <widget class="QLabel" name="tDamageDisplay">
                <property name="toolTip">
@@ -533,6 +429,45 @@
                </property>
               </widget>
              </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="tJamDisplayLabel">
+               <property name="text">
+                <string>EV(Jams):</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLabel" name="tDpsDisplay">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Average DPS over all cycles.&lt;/p&gt;&lt;p&gt;More simply: Total Damage / Total Time&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Box</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLabel" name="tJamDisplay">
+               <property name="frameShape">
+                <enum>QFrame::Box</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
           </layout>
@@ -540,42 +475,148 @@
         </item>
        </layout>
       </item>
-      <item row="3" column="0" colspan="5">
-       <widget class="QProgressBar" name="progressBar">
-        <property name="maximum">
-         <number>1</number>
+      <item row="0" column="0" colspan="2">
+       <widget class="QGroupBox" name="loadoutBox">
+        <property name="title">
+         <string>Loadout</string>
         </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-        <property name="invertedAppearance">
-         <bool>false</bool>
-        </property>
-        <property name="format">
-         <string>%p%</string>
-        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0">
+         <item>
+          <layout class="QHBoxLayout" name="loadoutLayout" stretch="1,2">
+           <item>
+            <layout class="QVBoxLayout" name="uacSelectLayout" stretch="0,0">
+             <item alignment="Qt::AlignBottom">
+              <widget class="QLabel" name="uacSelectLabel">
+               <property name="text">
+                <string>UAC:</string>
+               </property>
+               <property name="buddy">
+                <cstring>uacSelect</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="uacSelect">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UAC to test.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string/>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>2</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>5</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>10</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>20</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="cycleCountLayout" stretch="0,0">
+             <item alignment="Qt::AlignBottom">
+              <widget class="QLabel" name="cycleCountLabel">
+               <property name="text">
+                <string>Cycles:</string>
+               </property>
+               <property name="buddy">
+                <cstring>cycleCount</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cycleCount">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of double-tap cycles to be tested over.&lt;/p&gt;&lt;p&gt;Min: 10000 (ensures accuracy)&lt;/p&gt;&lt;p&gt;Max: 100000000 (10&lt;span style=&quot; vertical-align:super;&quot;&gt;8&lt;/span&gt;; you may not want to go over 10&lt;span style=&quot; vertical-align:super;&quot;&gt;7&lt;/span&gt; anyways)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="minimum">
+                <number>10000</number>
+               </property>
+               <property name="maximum">
+                <number>100000000</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="calcButton">
-        <property name="enabled">
+      <item row="0" column="2">
+       <widget class="QGroupBox" name="modifierBox">
+        <property name="title">
+         <string>Cooldown Modifiers</string>
+        </property>
+        <property name="flat">
          <bool>false</bool>
         </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;FOR SCIENCE!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>For Science!</string>
-        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QCheckBox" name="fastfireCheck">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables Fast Fire.&lt;/p&gt;&lt;p&gt;+5% Cooldown Reduction.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Fast Fire</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="moduleLayout">
+           <item>
+            <widget class="QCheckBox" name="moduleCheck">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables Cooldown Module.&lt;/p&gt;&lt;p&gt;(Not available for UAC2.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>CD Module Rank:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="moduleRank">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cooldown Module Rank.&lt;/p&gt;&lt;p&gt;Each rank increases the cooldown modifier by 2.4%:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 1: +2.4%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 2: +4.8%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 3: +7.2%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 4: +9.6%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 5: +12.0%&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>5</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -650,102 +691,6 @@
  </resources>
  <connections>
   <connection>
-   <sender>calcButton</sender>
-   <signal>clicked()</signal>
-   <receiver>uactestClass</receiver>
-   <slot>onCalcButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>48</x>
-     <y>340</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>114</x>
-     <y>490</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>uacSelect</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>uactestClass</receiver>
-   <slot>updateUiState()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>59</x>
-     <y>117</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>136</x>
-     <y>176</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>uacSelect</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>uactestClass</receiver>
-   <slot>checkParametersValid()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>59</x>
-     <y>117</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>135</x>
-     <y>223</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cycleCount</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>uactestClass</receiver>
-   <slot>checkParametersValid()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>117</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>344</x>
-     <y>175</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>overrideCdrCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>uactestClass</receiver>
-   <slot>updateUiState()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>614</x>
-     <y>86</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>719</x>
-     <y>164</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>overrideJamCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>uactestClass</receiver>
-   <slot>updateUiState()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>614</x>
-     <y>178</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>898</x>
-     <y>163</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>actionE_xit</sender>
    <signal>triggered()</signal>
    <receiver>uactestClass</receiver>
@@ -794,6 +739,54 @@
    </hints>
   </connection>
   <connection>
+   <sender>cycleCount</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>checkParametersValid()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>344</x>
+     <y>175</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>overrideJamCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>614</x>
+     <y>178</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>898</x>
+     <y>163</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>uacSelect</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>checkParametersValid()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>223</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>moduleCheck</sender>
    <signal>toggled(bool)</signal>
    <receiver>uactestClass</receiver>
@@ -806,6 +799,54 @@
     <hint type="destinationlabel">
      <x>318</x>
      <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>overrideCdrCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>614</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>719</x>
+     <y>164</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>calcButton</sender>
+   <signal>clicked()</signal>
+   <receiver>uactestClass</receiver>
+   <slot>onCalcButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>340</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>114</x>
+     <y>490</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>uacSelect</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>136</x>
+     <y>176</y>
     </hint>
    </hints>
   </connection>

@@ -10,10 +10,12 @@ public:
 	long long int getDamage() const { return total_damage_; };
 	double getTime() const { return time_; };
 	double getDps() const { return (total_damage_ / time_); };
+	int getJams() const { return jams_; };
 
 	long long int theoryDamage() const { return theory_damage_; };
 	double theoryTime() const { return theory_time_; };
 	double theoryDps() const { return (theory_damage_ / theory_time_); };
+	int theoryJams() const { return theory_jams_; };
 
 	void reset();
 
@@ -62,8 +64,10 @@ protected:
 	// Simulation Vars
 	long long int total_damage_;
 	double time_;
+	int jams_;
 
 	// Theoretical Vars
 	long long int theory_damage_;
 	double theory_time_;
+	int theory_jams_;
 };
