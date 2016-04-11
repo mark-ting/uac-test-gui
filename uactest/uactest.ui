@@ -604,23 +604,15 @@
     <property name="title">
      <string>&amp;Program</string>
     </property>
+    <addaction name="action_About"/>
+    <addaction name="action_Legal"/>
     <addaction name="actionE_xit"/>
    </widget>
    <addaction name="menu_Program"/>
   </widget>
-  <action name="actionQuit">
+  <action name="actionE_xit">
    <property name="text">
-    <string>Quit</string>
-   </property>
-  </action>
-  <action name="actionAbout">
-   <property name="text">
-    <string>About</string>
-   </property>
-  </action>
-  <action name="actionLegal">
-   <property name="text">
-    <string>Legal</string>
+    <string>E&amp;xit</string>
    </property>
   </action>
   <action name="action_About">
@@ -633,11 +625,6 @@
     <string>&amp;Legal</string>
    </property>
   </action>
-  <action name="actionE_xit">
-   <property name="text">
-    <string>E&amp;xit</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
@@ -646,8 +633,17 @@
   <tabstop>fastfireCheck</tabstop>
   <tabstop>moduleCheck</tabstop>
   <tabstop>moduleRank</tabstop>
+  <tabstop>generalCooldownCheck</tabstop>
+  <tabstop>generalCooldownValue</tabstop>
+  <tabstop>uacCooldownCheck</tabstop>
+  <tabstop>uacCooldownValue</tabstop>
+  <tabstop>uacJamChanceCheck</tabstop>
+  <tabstop>uacJamChanceValue</tabstop>
   <tabstop>overrideCdrCheck</tabstop>
   <tabstop>overrideCdrValue</tabstop>
+  <tabstop>overrideJamCheck</tabstop>
+  <tabstop>overrideJamValue</tabstop>
+  <tabstop>calcButton</tabstop>
  </tabstops>
  <resources>
   <include location="uactest.qrc"/>
@@ -749,11 +745,61 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionE_xit</sender>
+   <signal>triggered()</signal>
+   <receiver>uactestClass</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>583</x>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_About</sender>
+   <signal>triggered()</signal>
+   <receiver>uactestClass</receiver>
+   <slot>showLegal()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>583</x>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_Legal</sender>
+   <signal>triggered()</signal>
+   <receiver>uactestClass</receiver>
+   <slot>showAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>583</x>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>checkParametersValid()</slot>
   <slot>onCalcButtonClicked()</slot>
   <slot>onToggleCdrOverride(bool)</slot>
   <slot>updateUiState()</slot>
+  <slot>showAbout()</slot>
+  <slot>showLegal()</slot>
  </slots>
 </ui>

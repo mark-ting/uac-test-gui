@@ -38,12 +38,9 @@ QT_BEGIN_NAMESPACE
 class Ui_uactestClass
 {
 public:
-    QAction *actionQuit;
-    QAction *actionAbout;
-    QAction *actionLegal;
+    QAction *actionE_xit;
     QAction *action_About;
     QAction *action_Legal;
-    QAction *actionE_xit;
     QWidget *centralWidget;
     QGridLayout *gridLayout_2;
     QGridLayout *uactestLayout;
@@ -120,18 +117,12 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(uactestClass->sizePolicy().hasHeightForWidth());
         uactestClass->setSizePolicy(sizePolicy);
-        actionQuit = new QAction(uactestClass);
-        actionQuit->setObjectName(QStringLiteral("actionQuit"));
-        actionAbout = new QAction(uactestClass);
-        actionAbout->setObjectName(QStringLiteral("actionAbout"));
-        actionLegal = new QAction(uactestClass);
-        actionLegal->setObjectName(QStringLiteral("actionLegal"));
+        actionE_xit = new QAction(uactestClass);
+        actionE_xit->setObjectName(QStringLiteral("actionE_xit"));
         action_About = new QAction(uactestClass);
         action_About->setObjectName(QStringLiteral("action_About"));
         action_Legal = new QAction(uactestClass);
         action_Legal->setObjectName(QStringLiteral("action_Legal"));
-        actionE_xit = new QAction(uactestClass);
-        actionE_xit->setObjectName(QStringLiteral("actionE_xit"));
         centralWidget = new QWidget(uactestClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout_2 = new QGridLayout(centralWidget);
@@ -522,10 +513,21 @@ public:
         QWidget::setTabOrder(cycleCount, fastfireCheck);
         QWidget::setTabOrder(fastfireCheck, moduleCheck);
         QWidget::setTabOrder(moduleCheck, moduleRank);
-        QWidget::setTabOrder(moduleRank, overrideCdrCheck);
+        QWidget::setTabOrder(moduleRank, generalCooldownCheck);
+        QWidget::setTabOrder(generalCooldownCheck, generalCooldownValue);
+        QWidget::setTabOrder(generalCooldownValue, uacCooldownCheck);
+        QWidget::setTabOrder(uacCooldownCheck, uacCooldownValue);
+        QWidget::setTabOrder(uacCooldownValue, uacJamChanceCheck);
+        QWidget::setTabOrder(uacJamChanceCheck, uacJamChanceValue);
+        QWidget::setTabOrder(uacJamChanceValue, overrideCdrCheck);
         QWidget::setTabOrder(overrideCdrCheck, overrideCdrValue);
+        QWidget::setTabOrder(overrideCdrValue, overrideJamCheck);
+        QWidget::setTabOrder(overrideJamCheck, overrideJamValue);
+        QWidget::setTabOrder(overrideJamValue, calcButton);
 
         menuBar->addAction(menu_Program->menuAction());
+        menu_Program->addAction(action_About);
+        menu_Program->addAction(action_Legal);
         menu_Program->addAction(actionE_xit);
 
         retranslateUi(uactestClass);
@@ -535,6 +537,9 @@ public:
         QObject::connect(cycleCount, SIGNAL(valueChanged(int)), uactestClass, SLOT(checkParametersValid()));
         QObject::connect(overrideCdrCheck, SIGNAL(toggled(bool)), uactestClass, SLOT(updateUiState()));
         QObject::connect(overrideJamCheck, SIGNAL(toggled(bool)), uactestClass, SLOT(updateUiState()));
+        QObject::connect(actionE_xit, SIGNAL(triggered()), uactestClass, SLOT(close()));
+        QObject::connect(action_About, SIGNAL(triggered()), uactestClass, SLOT(showLegal()));
+        QObject::connect(action_Legal, SIGNAL(triggered()), uactestClass, SLOT(showAbout()));
 
         QMetaObject::connectSlotsByName(uactestClass);
     } // setupUi
@@ -542,12 +547,9 @@ public:
     void retranslateUi(QMainWindow *uactestClass)
     {
         uactestClass->setWindowTitle(QApplication::translate("uactestClass", "UAC Test", 0));
-        actionQuit->setText(QApplication::translate("uactestClass", "Quit", 0));
-        actionAbout->setText(QApplication::translate("uactestClass", "About", 0));
-        actionLegal->setText(QApplication::translate("uactestClass", "Legal", 0));
+        actionE_xit->setText(QApplication::translate("uactestClass", "E&xit", 0));
         action_About->setText(QApplication::translate("uactestClass", "&About", 0));
         action_Legal->setText(QApplication::translate("uactestClass", "&Legal", 0));
-        actionE_xit->setText(QApplication::translate("uactestClass", "E&xit", 0));
         loadoutBox->setTitle(QApplication::translate("uactestClass", "Loadout", 0));
         uacSelectLabel->setText(QApplication::translate("uactestClass", "UAC:", 0));
         uacSelect->clear();

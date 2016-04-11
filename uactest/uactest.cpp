@@ -1,22 +1,16 @@
 #include "uactest.h"
 #include <QtConcurrent/QtConcurrentRun>
-#include <qdesktopservices.h>
-#include <qurl.h>
+#include <QDesktopServices>
+#include <QUrl>
 
 uactest::uactest(QWidget *parent)
 	: QMainWindow(parent)
 {
 	loadUacs();
 	ui.setupUi(this);
-	module_locked = false;
-
-	connect(ui.actionE_xit, SIGNAL(triggered()), this, SLOT(close()));
 
 	connect(&theoryWatcher, SIGNAL(finished()), this, SLOT(theoryComplete()));
 	connect(&simulationWatcher, SIGNAL(finished()), this, SLOT(simulationComplete()));
-
-	ui.progressBar->setMinimum(0);
-	ui.progressBar->setMaximum(1);
 }
 
 uactest::~uactest()
@@ -158,4 +152,14 @@ void uactest::clearDisplays()
 	ui.damageDisplay->clear();
 	ui.timeDisplay->clear();
 	ui.dpsDisplay->clear();
+}
+
+void uactest::showAbout()
+{
+	QDesktopServices::openUrl(QUrl("https://github.com/mat3049/uac-test-gui/", QUrl::TolerantMode));
+}
+
+void uactest::showLegal()
+{
+	QDesktopServices::openUrl(QUrl("https://github.com/mat3049/uac-test-gui/wiki/Legal", QUrl::TolerantMode));
 }
