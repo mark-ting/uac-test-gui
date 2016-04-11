@@ -111,7 +111,7 @@ public:
     {
         if (uactestClass->objectName().isEmpty())
             uactestClass->setObjectName(QStringLiteral("uactestClass"));
-        uactestClass->resize(1167, 679);
+        uactestClass->resize(637, 398);
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -263,7 +263,7 @@ public:
 
         generalCooldownValue = new QDoubleSpinBox(quirkBox);
         generalCooldownValue->setObjectName(QStringLiteral("generalCooldownValue"));
-        generalCooldownValue->setEnabled(true);
+        generalCooldownValue->setEnabled(false);
 
         generalCooldownLayout->addWidget(generalCooldownValue);
 
@@ -280,7 +280,7 @@ public:
 
         uacCooldownValue = new QDoubleSpinBox(quirkBox);
         uacCooldownValue->setObjectName(QStringLiteral("uacCooldownValue"));
-        uacCooldownValue->setEnabled(true);
+        uacCooldownValue->setEnabled(false);
 
         uacCooldownLayout->addWidget(uacCooldownValue);
 
@@ -297,7 +297,7 @@ public:
 
         uacJamChanceValue = new QDoubleSpinBox(quirkBox);
         uacJamChanceValue->setObjectName(QStringLiteral("uacJamChanceValue"));
-        uacJamChanceValue->setEnabled(true);
+        uacJamChanceValue->setEnabled(false);
 
         uacJamChanceLayout->addWidget(uacJamChanceValue);
 
@@ -329,7 +329,7 @@ public:
 
         moduleRank = new QSpinBox(modifierBox);
         moduleRank->setObjectName(QStringLiteral("moduleRank"));
-        moduleRank->setEnabled(true);
+        moduleRank->setEnabled(false);
         moduleRank->setLayoutDirection(Qt::LeftToRight);
         moduleRank->setAlignment(Qt::AlignCenter);
         moduleRank->setMinimum(1);
@@ -501,7 +501,7 @@ public:
         uactestClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         menuBar = new QMenuBar(uactestClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1167, 38));
+        menuBar->setGeometry(QRect(0, 0, 637, 21));
         menu_Program = new QMenu(menuBar);
         menu_Program->setObjectName(QStringLiteral("menu_Program"));
         uactestClass->setMenuBar(menuBar);
@@ -540,6 +540,10 @@ public:
         QObject::connect(actionE_xit, SIGNAL(triggered()), uactestClass, SLOT(close()));
         QObject::connect(action_About, SIGNAL(triggered()), uactestClass, SLOT(showLegal()));
         QObject::connect(action_Legal, SIGNAL(triggered()), uactestClass, SLOT(showAbout()));
+        QObject::connect(moduleCheck, SIGNAL(toggled(bool)), uactestClass, SLOT(updateUiState()));
+        QObject::connect(generalCooldownCheck, SIGNAL(toggled(bool)), uactestClass, SLOT(updateUiState()));
+        QObject::connect(uacCooldownCheck, SIGNAL(toggled(bool)), uactestClass, SLOT(updateUiState()));
+        QObject::connect(uacJamChanceCheck, SIGNAL(toggled(bool)), uactestClass, SLOT(updateUiState()));
 
         QMetaObject::connectSlotsByName(uactestClass);
     } // setupUi

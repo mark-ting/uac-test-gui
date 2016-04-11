@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1167</width>
-    <height>679</height>
+    <width>637</width>
+    <height>398</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -215,7 +215,7 @@
            <item>
             <widget class="QDoubleSpinBox" name="generalCooldownValue">
              <property name="enabled">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -233,7 +233,7 @@
            <item>
             <widget class="QDoubleSpinBox" name="uacCooldownValue">
              <property name="enabled">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -251,7 +251,7 @@
            <item>
             <widget class="QDoubleSpinBox" name="uacJamChanceValue">
              <property name="enabled">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -294,7 +294,7 @@
            <item>
             <widget class="QSpinBox" name="moduleRank">
              <property name="enabled">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cooldown Module Rank.&lt;/p&gt;&lt;p&gt;Each rank increases the cooldown modifier by 2.4%:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 1: +2.4%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 2: +4.8%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 3: +7.2%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 4: +9.6%&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rank 5: +12.0%&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -596,8 +596,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1167</width>
-     <height>38</height>
+     <width>637</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Program">
@@ -656,8 +656,8 @@
    <slot>onCalcButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>38</x>
-     <y>513</y>
+     <x>48</x>
+     <y>340</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -672,8 +672,8 @@
    <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>206</y>
+     <x>59</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>136</x>
@@ -688,8 +688,8 @@
    <slot>checkParametersValid()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>206</y>
+     <x>59</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>135</x>
@@ -704,8 +704,8 @@
    <slot>checkParametersValid()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>246</x>
-     <y>206</y>
+     <x>146</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>344</x>
@@ -720,8 +720,8 @@
    <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1126</x>
-     <y>156</y>
+     <x>614</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>719</x>
@@ -736,8 +736,8 @@
    <slot>updateUiState()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1126</x>
-     <y>316</y>
+     <x>614</x>
+     <y>178</y>
     </hint>
     <hint type="destinationlabel">
      <x>898</x>
@@ -790,6 +790,70 @@
     <hint type="destinationlabel">
      <x>583</x>
      <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moduleCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>228</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>generalCooldownCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>uacCooldownCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>126</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>uacJamChanceCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>uactestClass</receiver>
+   <slot>updateUiState()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>198</y>
     </hint>
    </hints>
   </connection>
