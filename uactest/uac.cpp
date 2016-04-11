@@ -14,12 +14,17 @@ void loadUacs()
 	uac_list.push_back(std::shared_ptr<Uac>(new Uac(20, 4.0, 0.17)));
 }
 
-std::shared_ptr<Uac> selectUac(int index) {
-	if (index == 0) {
+std::shared_ptr<Uac> selectUac(int uac) {
+	switch (uac) {
+	case 2:
+		return uac_list[0];
+	case 5:
+		return uac_list[1];
+	case 10:
+		return uac_list[2];
+	case 20:
+		return uac_list[3];
+	default:
 		return NULL;
-	}
-	else
-	{
-		return uac_list[index - 1];
 	}
 }

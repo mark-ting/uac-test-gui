@@ -2,6 +2,7 @@
 #include <QtConcurrent/QtConcurrentRun>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QString>
 
 uactest::uactest(QWidget *parent)
 	: QMainWindow(parent)
@@ -77,7 +78,7 @@ void uactest::onCalcButtonClicked() {
 	ui.statusBar->showMessage("Running...");
 
 	// Fetch UAC and options
-	std::shared_ptr<Uac> uac = selectUac(ui.uacSelect->currentIndex());
+	std::shared_ptr<Uac> uac = selectUac(ui.uacSelect->currentText().toInt());
 	int num_cycles = ui.cycleCount->value();
 
 	bool override_cdr = ui.overrideCdrCheck->isChecked();
