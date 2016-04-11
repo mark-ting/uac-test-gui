@@ -194,7 +194,6 @@ public:
 
         verticalLayout_7->addLayout(overrideJamLayout);
 
-        overrideCdrBox->raise();
 
         overrideLayout->addWidget(overrideJamBox);
 
@@ -585,7 +584,7 @@ public:
         action_Legal->setText(QApplication::translate("uactestClass", "&Legal", 0));
         overrideCdrBox->setTitle(QApplication::translate("uactestClass", "CDR Override", 0));
 #ifndef QT_NO_TOOLTIP
-        overrideCdrCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Disables all Cooldown Modifiers and allows manual entry of CDR.</p></body></html>", 0));
+        overrideCdrCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Disables all Cooldown Modifiers and allows manual entry of CDR.</p><p>This affects Cooldown <span style=\" font-weight:600;\">Reduction</span>, not Cooldown itself.</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         overrideCdrCheck->setText(QApplication::translate("uactestClass", "Override CDR (%)", 0));
 #ifndef QT_NO_TOOLTIP
@@ -597,16 +596,25 @@ public:
 #endif // QT_NO_TOOLTIP
         overrideJamCheck->setText(QApplication::translate("uactestClass", "Override Jam (%)", 0));
 #ifndef QT_NO_TOOLTIP
-        overrideJamValue->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Cooldown Reduction value.</p><p>(Example: 12.0 = 12%, which is equivalent to a Rank 5 CD Module.)</p></body></html>", 0));
+        overrideJamValue->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Jam Chance value.</p><p>(Example: 15.0 = 15%, which is equivalent tothe base jam chance on a UAC/5.)</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         progressBar->setFormat(QApplication::translate("uactestClass", "%p%", 0));
 #ifndef QT_NO_TOOLTIP
-        calcButton->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>FOR SCIENCE!</p></body></html>", 0));
+        calcButton->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Let's <span style=\" font-weight:600;\">science</span> this up!</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         calcButton->setText(QApplication::translate("uactestClass", "For Science!", 0));
         quirkBox->setTitle(QApplication::translate("uactestClass", "Quirks", 0));
+#ifndef QT_NO_TOOLTIP
+        generalCooldownCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Enables Ballistic Cooldown quirk.</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         generalCooldownCheck->setText(QApplication::translate("uactestClass", "Ballistic Cooldown (%)", 0));
+#ifndef QT_NO_TOOLTIP
+        uacCooldownCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Enables UAC Cooldown quirk.</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         uacCooldownCheck->setText(QApplication::translate("uactestClass", "UAC Cooldown (%)", 0));
+#ifndef QT_NO_TOOLTIP
+        uacJamChanceCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Enables UAC Jam Chance quirk.</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         uacJamChanceCheck->setText(QApplication::translate("uactestClass", "UAC Jam Chance (%)", 0));
         resultBox->setTitle(QApplication::translate("uactestClass", "Simulation Results", 0));
         damageDisplayLabel->setText(QApplication::translate("uactestClass", "Dmg:", 0));
@@ -616,33 +624,39 @@ public:
         damageDisplay->setText(QString());
         timeDisplayLabel->setText(QApplication::translate("uactestClass", "Time:", 0));
 #ifndef QT_NO_TOOLTIP
-        timeDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).</p><p><br/>Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10<span style=\" vertical-align:super;\">4</span>+ cycles).</p></body></html>", 0));
+        timeDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         timeDisplay->setText(QString());
         dpsDisplayLabel->setText(QApplication::translate("uactestClass", "DPS:", 0));
 #ifndef QT_NO_TOOLTIP
-        dpsDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Average DPS over all cycles.</p><p>More simply: Total Damage / Total Time</p></body></html>", 0));
+        dpsDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>DPS over all cycles.</p><p>Simply: Total Damage / Total Time</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         dpsDisplay->setText(QString());
-        jamDisplay->setText(QApplication::translate("uactestClass", "TextLabel", 0));
+#ifndef QT_NO_TOOLTIP
+        jamDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total jams over all cycles.</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
+        jamDisplay->setText(QString());
         jamDisplayLabel->setText(QApplication::translate("uactestClass", "Jams:", 0));
         theoryBox->setTitle(QApplication::translate("uactestClass", "Theoretical Results", 0));
         tDamageDisplayLabel->setText(QApplication::translate("uactestClass", "EV(Dmg):", 0));
         tTimeDisplayLabel->setText(QApplication::translate("uactestClass", "EV(Time):", 0));
 #ifndef QT_NO_TOOLTIP
-        tTimeDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).</p><p><br/>Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10<span style=\" vertical-align:super;\">4</span>+ cycles).</p></body></html>", 0));
+        tTimeDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Expected time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         tTimeDisplay->setText(QString());
         tDpsDisplayLabel->setText(QApplication::translate("uactestClass", "EV(DPS):", 0));
 #ifndef QT_NO_TOOLTIP
-        tDamageDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Total damage dealt over all cycles.</p></body></html>", 0));
+        tDamageDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Expected damage dealt over all cycles.</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         tDamageDisplay->setText(QString());
         tJamDisplayLabel->setText(QApplication::translate("uactestClass", "EV(Jams):", 0));
 #ifndef QT_NO_TOOLTIP
-        tDpsDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Average DPS over all cycles.</p><p>More simply: Total Damage / Total Time</p></body></html>", 0));
+        tDpsDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Expected DPS over all cycles.</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         tDpsDisplay->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        tJamDisplay->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Expected jams over all cycles.</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         tJamDisplay->setText(QString());
         loadoutBox->setTitle(QApplication::translate("uactestClass", "Loadout", 0));
         uacSelectLabel->setText(QApplication::translate("uactestClass", "UAC:", 0));
@@ -655,11 +669,11 @@ public:
          << QApplication::translate("uactestClass", "20", 0)
         );
 #ifndef QT_NO_TOOLTIP
-        uacSelect->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>UAC to test.</p></body></html>", 0));
+        uacSelect->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>UAC Class to perform calculations with.</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         cycleCountLabel->setText(QApplication::translate("uactestClass", "Cycles:", 0));
 #ifndef QT_NO_TOOLTIP
-        cycleCount->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Number of double-tap cycles to be tested over.</p><p>Min: 10000 (ensures accuracy)</p><p>Max: 100000000 (10<span style=\" vertical-align:super;\">8</span>; you may not want to go over 10<span style=\" vertical-align:super;\">7</span> anyways)</p></body></html>", 0));
+        cycleCount->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Number of double-tap cycles to be tested over.</p><p>Min: 10000 (ensures accuracy)</p><p>Max: 100000000 (10<span style=\" vertical-align:super;\">8</span>; you may not want to go over 10<span style=\" vertical-align:super;\">7</span> if you are CPU limited.)</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         modifierBox->setTitle(QApplication::translate("uactestClass", "Cooldown Modifiers", 0));
 #ifndef QT_NO_TOOLTIP

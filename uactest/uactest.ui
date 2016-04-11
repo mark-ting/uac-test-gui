@@ -36,7 +36,7 @@
              <item>
               <widget class="QCheckBox" name="overrideCdrCheck">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disables all Cooldown Modifiers and allows manual entry of CDR.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disables all Cooldown Modifiers and allows manual entry of CDR.&lt;/p&gt;&lt;p&gt;This affects Cooldown &lt;span style=&quot; font-weight:600;&quot;&gt;Reduction&lt;/span&gt;, not Cooldown itself.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Override CDR (%)</string>
@@ -91,7 +91,7 @@
                 <bool>false</bool>
                </property>
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cooldown Reduction value.&lt;/p&gt;&lt;p&gt;(Example: 12.0 = 12%, which is equivalent to a Rank 5 CD Module.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jam Chance value.&lt;/p&gt;&lt;p&gt;(Example: 15.0 = 15%, which is equivalent tothe base jam chance on a UAC/5.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="decimals">
                 <number>2</number>
@@ -107,7 +107,6 @@
             </layout>
            </item>
           </layout>
-          <zorder>overrideCdrBox</zorder>
          </widget>
         </item>
        </layout>
@@ -143,7 +142,7 @@
          </sizepolicy>
         </property>
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;FOR SCIENCE!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Let's &lt;span style=&quot; font-weight:600;&quot;&gt;science&lt;/span&gt; this up!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string>For Science!</string>
@@ -160,6 +159,9 @@
           <layout class="QVBoxLayout" name="generalCooldownLayout">
            <item>
             <widget class="QCheckBox" name="generalCooldownCheck">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables Ballistic Cooldown quirk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>Ballistic Cooldown (%)</string>
              </property>
@@ -178,6 +180,9 @@
           <layout class="QVBoxLayout" name="uacCooldownLayout">
            <item>
             <widget class="QCheckBox" name="uacCooldownCheck">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables UAC Cooldown quirk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>UAC Cooldown (%)</string>
              </property>
@@ -196,6 +201,9 @@
           <layout class="QVBoxLayout" name="uacJamChanceLayout">
            <item>
             <widget class="QCheckBox" name="uacJamChanceCheck">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables UAC Jam Chance quirk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>UAC Jam Chance (%)</string>
              </property>
@@ -277,7 +285,7 @@
              <item row="1" column="1">
               <widget class="QLabel" name="timeDisplay">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10&lt;span style=&quot; vertical-align:super;&quot;&gt;4&lt;/span&gt;+ cycles).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
@@ -303,7 +311,7 @@
              <item row="2" column="1">
               <widget class="QLabel" name="dpsDisplay">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Average DPS over all cycles.&lt;/p&gt;&lt;p&gt;More simply: Total Damage / Total Time&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DPS over all cycles.&lt;/p&gt;&lt;p&gt;Simply: Total Damage / Total Time&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
@@ -321,6 +329,9 @@
              </item>
              <item row="3" column="1">
               <widget class="QLabel" name="jamDisplay">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total jams over all cycles.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
                </property>
@@ -328,7 +339,7 @@
                 <enum>QFrame::Sunken</enum>
                </property>
                <property name="text">
-                <string>TextLabel</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -387,7 +398,7 @@
              <item row="1" column="1">
               <widget class="QLabel" name="tTimeDisplay">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Devnote: due to the way things are coded, it will actually be greater by (Cooldown) seconds, which matters... not much in the long run (10&lt;span style=&quot; vertical-align:super;&quot;&gt;4&lt;/span&gt;+ cycles).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Expected time (in seconds) to complete all cycles, assuming perfect timing (no delay between cooldown and firing).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
@@ -413,7 +424,7 @@
              <item row="0" column="1">
               <widget class="QLabel" name="tDamageDisplay">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Total damage dealt over all cycles.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Expected damage dealt over all cycles.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
@@ -439,7 +450,7 @@
              <item row="2" column="1">
               <widget class="QLabel" name="tDpsDisplay">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Average DPS over all cycles.&lt;/p&gt;&lt;p&gt;More simply: Total Damage / Total Time&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Expected DPS over all cycles.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
@@ -457,6 +468,9 @@
              </item>
              <item row="3" column="1">
               <widget class="QLabel" name="tJamDisplay">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Expected jams over all cycles.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
                </property>
@@ -498,7 +512,7 @@
              <item>
               <widget class="QComboBox" name="uacSelect">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UAC to test.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UAC Class to perform calculations with.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <item>
                 <property name="text">
@@ -544,7 +558,7 @@
              <item>
               <widget class="QSpinBox" name="cycleCount">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of double-tap cycles to be tested over.&lt;/p&gt;&lt;p&gt;Min: 10000 (ensures accuracy)&lt;/p&gt;&lt;p&gt;Max: 100000000 (10&lt;span style=&quot; vertical-align:super;&quot;&gt;8&lt;/span&gt;; you may not want to go over 10&lt;span style=&quot; vertical-align:super;&quot;&gt;7&lt;/span&gt; anyways)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of double-tap cycles to be tested over.&lt;/p&gt;&lt;p&gt;Min: 10000 (ensures accuracy)&lt;/p&gt;&lt;p&gt;Max: 100000000 (10&lt;span style=&quot; vertical-align:super;&quot;&gt;8&lt;/span&gt;; you may not want to go over 10&lt;span style=&quot; vertical-align:super;&quot;&gt;7&lt;/span&gt; if you are CPU limited.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="minimum">
                 <number>10000</number>
