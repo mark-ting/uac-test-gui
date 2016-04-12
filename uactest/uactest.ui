@@ -633,6 +633,35 @@
         </layout>
        </widget>
       </item>
+      <item row="1" column="0">
+       <widget class="QGroupBox" name="notifyBox">
+        <property name="title">
+         <string>Notification Settings</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="noAlertCheck">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Taskbar icon will &lt;span style=&quot; font-weight:600;&quot;&gt;not&lt;/span&gt; flash on calculation completion.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Suppress Alert</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QCheckBox" name="noSoundCheck">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Application will &lt;span style=&quot; font-weight:600;&quot;&gt;not&lt;/span&gt; play Windows default beep on calculation completion.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Mute Sound</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -724,7 +753,7 @@
    <sender>action_About</sender>
    <signal>triggered()</signal>
    <receiver>uactestClass</receiver>
-   <slot>showLegal()</slot>
+   <slot>showAbout()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -740,7 +769,7 @@
    <sender>action_Legal</sender>
    <signal>triggered()</signal>
    <receiver>uactestClass</receiver>
-   <slot>showAbout()</slot>
+   <slot>showLegal()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>

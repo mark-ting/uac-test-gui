@@ -6,6 +6,7 @@ Uac::~Uac()
 {
 }
 
+// TODO: Fix this. The hard-coded solution is inelegant.
 void loadUacs()
 {
 	uac_list.push_back(std::shared_ptr<Uac>(new Uac(2, 0.72, 0.15)));

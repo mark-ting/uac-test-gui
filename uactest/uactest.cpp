@@ -128,8 +128,14 @@ void uactest::onCalcButtonClicked() {
 
 void uactest::simulationComplete()
 {
-	QApplication::beep();
-	QApplication::alert(this, 0);
+	if (!ui.noSoundCheck->isChecked()) {
+		QApplication::beep();
+	}
+
+	if (!ui.noAlertCheck->isChecked()) {
+		QApplication::alert(this, 0);
+	}
+
 	displaySimulationResults();
 	ui.progressBar->setMaximum(1);
 	ui.statusBar->showMessage("Complete!");

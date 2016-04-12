@@ -106,6 +106,10 @@ public:
     QHBoxLayout *moduleLayout;
     QCheckBox *moduleCheck;
     QSpinBox *moduleRank;
+    QGroupBox *notifyBox;
+    QGridLayout *gridLayout;
+    QCheckBox *noAlertCheck;
+    QCheckBox *noSoundCheck;
     QStatusBar *statusBar;
     QToolBar *mainToolBar;
     QMenuBar *menuBar;
@@ -517,6 +521,25 @@ public:
 
         uactestLayout->addWidget(modifierBox, 0, 2, 1, 1);
 
+        notifyBox = new QGroupBox(centralWidget);
+        notifyBox->setObjectName(QStringLiteral("notifyBox"));
+        gridLayout = new QGridLayout(notifyBox);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        noAlertCheck = new QCheckBox(notifyBox);
+        noAlertCheck->setObjectName(QStringLiteral("noAlertCheck"));
+
+        gridLayout->addWidget(noAlertCheck, 0, 0, 1, 1);
+
+        noSoundCheck = new QCheckBox(notifyBox);
+        noSoundCheck->setObjectName(QStringLiteral("noSoundCheck"));
+
+        gridLayout->addWidget(noSoundCheck, 1, 0, 1, 1);
+
+
+        uactestLayout->addWidget(notifyBox, 1, 0, 1, 1);
+
 
         gridLayout_2->addLayout(uactestLayout, 0, 0, 1, 1);
 
@@ -560,8 +583,8 @@ public:
 
         retranslateUi(uactestClass);
         QObject::connect(actionE_xit, SIGNAL(triggered()), uactestClass, SLOT(close()));
-        QObject::connect(action_About, SIGNAL(triggered()), uactestClass, SLOT(showLegal()));
-        QObject::connect(action_Legal, SIGNAL(triggered()), uactestClass, SLOT(showAbout()));
+        QObject::connect(action_About, SIGNAL(triggered()), uactestClass, SLOT(showAbout()));
+        QObject::connect(action_Legal, SIGNAL(triggered()), uactestClass, SLOT(showLegal()));
         QObject::connect(cycleCount, SIGNAL(valueChanged(int)), uactestClass, SLOT(checkParametersValid()));
         QObject::connect(overrideJamCheck, SIGNAL(toggled(bool)), uactestClass, SLOT(updateUiState()));
         QObject::connect(uacSelect, SIGNAL(currentIndexChanged(int)), uactestClass, SLOT(checkParametersValid()));
@@ -688,6 +711,15 @@ public:
         moduleRank->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Cooldown Module Rank.</p><p>Each rank increases the cooldown modifier by 2.4%:</p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 1: +2.4%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 2: +4.8%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 3: +7.2%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; ma"
                         "rgin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 4: +9.6%</li></ul><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Rank 5: +12.0%</li></ul></body></html>", 0));
 #endif // QT_NO_TOOLTIP
+        notifyBox->setTitle(QApplication::translate("uactestClass", "Notification Settings", 0));
+#ifndef QT_NO_TOOLTIP
+        noAlertCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Taskbar icon will <span style=\" font-weight:600;\">not</span> flash on calculation completion.</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
+        noAlertCheck->setText(QApplication::translate("uactestClass", "Suppress Alert", 0));
+#ifndef QT_NO_TOOLTIP
+        noSoundCheck->setToolTip(QApplication::translate("uactestClass", "<html><head/><body><p>Application will <span style=\" font-weight:600;\">not</span> play Windows default beep on calculation completion.</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
+        noSoundCheck->setText(QApplication::translate("uactestClass", "Mute Sound", 0));
         menu_Program->setTitle(QApplication::translate("uactestClass", "&Program", 0));
     } // retranslateUi
 
