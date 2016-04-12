@@ -29,13 +29,17 @@ private:
 
 	private slots:
 	void checkParametersValid();
-	void updateModifierUiState();
+	void updateUiState();
 
 	void onCalcButtonClicked();
 	void simulationComplete();
 
-	void displaySimulationResults();
 	void displayTheoreticalResults();
+	void displaySimulationResults();
+	void clearDisplays();
+
+	void showAbout();
+	void showLegal();
 };
 
 #endif // UACTEST_H
